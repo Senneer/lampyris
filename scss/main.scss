@@ -1,0 +1,60 @@
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #fafbfc;
+}
+
+main {
+  width: 81vw;
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    display: block;
+
+    & img {
+      display: block;
+      width: 190px;
+    }
+  }
+
+  &__profile {
+    display: block;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+
+    & img {
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+.home {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 50px 50px;
+
+  &__block {
+    background: #000000;
+  }
+}
