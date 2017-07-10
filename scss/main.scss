@@ -1,16 +1,63 @@
+@font-face {
+  font-family: "Lato-Light";
+  src: url(../fonts/Lato-Light.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Segui";
+  src: url(../fonts/segoeui.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Segui";
+  src: url(../fonts/seguisb.ttf) format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+$accidental-ff: "Segui", segoe;
+
+@mixin dashed-btn($font-w, $font-s) {
+  padding: 0 0 2px;
+  font: $font-w $font-s/1 $accidental-ff;
+  letter-spacing: .025em;
+  color: var(--dark-blue);
+  background: none;
+  border: none;
+  border-bottom: 1px dashed currentColor;
+  cursor: pointer;
+  outline: none;
+  transition: border-color .1s ease-in-out;
+
+  &:hover {
+    border-color: transparent;
+  }
+}
+
+:root {
+  --dark-blue: #5d6f7b;
+}
+
 html {
   height: 100%;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
-  background: #fafbfc;
+  font-family: $accidental-ff;
+  background: #fafbfc url(../img/bg.jpg) no-repeat 50% 50%/cover;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 main {
@@ -28,7 +75,7 @@ main {
 
     & img {
       display: block;
-      width: 190px;
+      width: 14vw;
     }
   }
 
@@ -52,9 +99,112 @@ main {
 .home {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 50px 50px;
+  grid-template-rows: 255px 255px;
+  grid-gap: 30px;
+  margin: 20px 0 0;
 
   &__block {
-    background: #000000;
+    position: relative;
+    background: #dddddd;
+    overflow: hidden;
+
+    &:hover {
+      background-position: 150% 150%!important;
+    }
+
+    &._wide {
+      grid-column: 2/span 2;
+    }
+
+    &._materials {
+      background: #8269be;
+    }
+  }
+
+  &__blockBg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 200px;
+    transition: transform .3s ease-in-out;
+    user-select: none;
+    pointer-events: none;
+    will-change: transform;
+
+    .home__block:hover & {
+      transform: translate(0, 0);
+    }
+  }
+
+  &__blockTitle {
+    max-width: 80%;
+    margin: 0 auto;
+    font-size: 1vw;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+    color: #ffffff;
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 81vw;
+  padding: 0 0 35px;
+
+  &__cr {
+    margin: 0;
+    font-size: .9vw;
+    font-family: "Lato-Light";
+    letter-spacing: .025em;
+    color: var(--dark-blue);
+  }
+
+  &__about {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    @include dashed-btn(500, 1vw);
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 6px;
+      background: url(../img/arrow-down.png) no-repeat 50% 50%;
+      transition: bottom .2s ease-in-out;
+      will-change: bottom;
+    }
+
+    &:hover::after {
+      bottom: -20px;
+    }
+  }
+
+  &__feedback {
+
+  }
+
+  &__feedbackCall {
+    @include dashed-btn(400, 1vw);
+  }
+
+  &__feedbackPhone {
+    margin-left: 30px;
+    font: 500 .9vw/1 $accidental-ff;
+    letter-spacing: .025em;
+    color: var(--dark-blue);
   }
 }
