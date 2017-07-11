@@ -102,26 +102,42 @@ main {
   grid-template-rows: 255px 255px;
   grid-gap: 30px;
   margin: 20px 0 0;
+}
 
-  &__block {
-    position: relative;
-    background: #dddddd;
-    overflow: hidden;
+.category {
+  position: relative;
+  padding-top: 50px;
+  background: #dddddd;
+  overflow: hidden;
 
-    &:hover {
-      background-position: 150% 150%!important;
-    }
-
-    &._wide {
-      grid-column: 2/span 2;
-    }
-
-    &._materials {
-      background: #8269be;
-    }
+  &._wide {
+    grid-column: 2/span 2;
   }
 
-  &__blockBg {
+  &._materials {
+    background: #8269be;
+  }
+  &._microelectronic {
+    background: #17b539;
+  }
+  &._cable {
+    background: #fb9b2a;
+  }
+  &._plastic {
+    background: #0bbcd6;
+  }
+  &._packing {
+    background: #e75152;
+  }
+  &._calculate {
+    background: #5f89a9 url(../img/percent.png) no-repeat -50px calc(100% + 75px);
+  }
+
+  &:not(._list) {
+    cursor: pointer;
+  }
+
+  &__bg {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -132,20 +148,78 @@ main {
     pointer-events: none;
     will-change: transform;
 
-    .home__block:hover & {
+    .category._list:hover & {
       transform: translate(0, 0);
     }
   }
 
-  &__blockTitle {
+  &__info {
+    position: relative;
+    top: 65%;
+    color: #ffffff;
+    transition: top .2s ease-in-out;
+    will-change: top;
+
+    .category._list:hover & {
+      top: 0;
+    }
+  }
+
+  &__infoTitle {
+    display: table;
     max-width: 80%;
     margin: 0 auto;
     font-size: 1vw;
     font-weight: 500;
     text-align: center;
     text-transform: uppercase;
-    text-decoration: underline;
-    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: .024em;
+    color: currentColor;
+
+    .category._list &::after {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      width: 7px;
+      height: 4px;
+      margin-left: 8px;
+      background: url(../img/arrow-down-wh.png) no-repeat 50% 50%;
+    }
+
+    & span {
+      border-bottom: 1px solid fade-out(#ffffff, 0.8);
+    }
+
+    .category:hover &::after {
+      transform: rotate(180deg);
+    }
+
+    .category:not(._list):hover & span {
+      border-color: currentColor;
+    }
+  }
+
+  &__infoList {
+    max-width: 80%;
+    margin: 20px auto 0;
+    padding: 0;
+    list-style: none;
+  }
+  &__infoListItem {
+    margin: 5px 0;
+
+    & a {
+      font-size: 1vw;
+      text-decoration: none;
+      letter-spacing: .025em;
+      color: currentColor;
+      border-bottom: 1px solid fade-out(#ffffff, 0.8);
+
+      &:hover {
+        border-color: currentColor;
+      }
+    }
   }
 }
 

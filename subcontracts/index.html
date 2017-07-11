@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lampyris</title>
+  <link rel="stylesheet" href="./css/slick.css">
   <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
@@ -14,16 +15,60 @@
         <button class="header__profile"><img src="./img/profile_icon.svg" alt=""></button>
       </header>
       <section class="home">
-        <div class="home__block _materials">
-          <img src="./img/materials.svg" alt="" class="home__blockBg">
-          <p class="home__blockTitle">ОБРАБОТКА МАТЕРИАЛОВ</p>
+        <div class="category _materials _list">
+          <img src="./img/materials.svg" alt="" class="category__bg">
+          <div class="category__info">
+            <p class="category__infoTitle"><span>ОБРАБОТКА МАТЕРИАЛОВ</span></p>
+            <ul class="category__infoList">
+              <li class="category__infoListItem"><a href="">Резка</a></li>
+              <li class="category__infoListItem"><a href="">Гибка</a></li>
+              <li class="category__infoListItem"><a href="">Пробивка</a></li>
+              <li class="category__infoListItem"><a href="">Порошковая покраска</a></li>
+            </ul>
+          </div>
         </div>
-        <div class="home__block"></div>
-        <div class="home__block"></div>
-        <div class="home__block"></div>
-        <div class="home__block"></div>
-        <div class="home__block _wide"></div>
-        <div class="home__block"></div>
+        <div class="category _microelectronic">
+          <img src="./img/microelectronic.svg" alt="" class="category__bg">
+          <div class="category__info">
+            <p class="category__infoTitle"><span>МИКРОЭЛЕКТРОНИКА</span></p>
+          </div>
+        </div>
+        <div class="category _cable">
+          <img src="./img/cable.svg" alt="" class="category__bg">
+          <div class="category__info">
+            <p class="category__infoTitle"><span>ОБРАБОТКА КАБЕЛЕЙ</span></p>
+          </div>
+        </div>
+        <div class="category _plastic _list">
+          <img src="./img/plastic.svg" alt="" class="category__bg">
+          <div class="category__info">
+            <p class="category__infoTitle"><span>ОБРАБОТКА ПЛАСТИКОВ</span></p>
+            <ul class="category__infoList">
+              <li class="category__infoListItem"><a href="">Лазерная гравировка</a></li>
+              <li class="category__infoListItem"><a href="">Лазерная резка</a></li>
+              <li class="category__infoListItem"><a href="">Фрезерная резка деталей</a></li>
+              <li class="category__infoListItem"><a href="">Термогибка</a></li>
+              <li class="category__infoListItem"><a href="">Вакуумная формовка</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="category _packing _list">
+          <img src="./img/packing.svg" alt="" class="category__bg">
+          <div class="category__info">
+            <p class="category__infoTitle"><span>УПАКОВКА И ПЕЧАТЬ</span></p>
+            <ul class="category__infoList">
+              <li class="category__infoListItem"><a href="">Интерьерная печать</a></li>
+              <li class="category__infoListItem"><a href="">Упаковка</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="category _wide"></div>
+        <div class="category _calculate">
+          <img src="./img/calculate.svg" alt="" class="category__bg">
+          <div class="category__info">
+            <p class="category__infoTitle"><span>КОНСТРУКТОР ЗАКАЗА</span></p>
+          </div>
+        </div>
       </section>
     </main>
     <footer class="footer">
@@ -35,5 +80,8 @@
       </div>
     </footer>
   </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/slick.min.js"></script>
+  <script src="./js/main.js"></script>
 </body>
 </html>

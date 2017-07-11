@@ -92,23 +92,40 @@ main {
   grid-gap: 30px;
   margin: 20px 0 0;
 }
-.home__block {
+
+.category {
   position: relative;
+  padding-top: 50px;
   background: #dddddd;
   overflow: hidden;
 }
-.home__block:hover {
-  background-position: 150% 150% !important;
-}
-.home__block._wide {
+.category._wide {
   -ms-grid-column-span: 2;
   -ms-grid-column: 2;
       grid-column: 2/span 2;
 }
-.home__block._materials {
+.category._materials {
   background: #8269be;
 }
-.home__blockBg {
+.category._microelectronic {
+  background: #17b539;
+}
+.category._cable {
+  background: #fb9b2a;
+}
+.category._plastic {
+  background: #0bbcd6;
+}
+.category._packing {
+  background: #e75152;
+}
+.category._calculate {
+  background: #5f89a9 url(../img/percent.png) no-repeat -50px calc(100% + 75px);
+}
+.category:not(._list) {
+  cursor: pointer;
+}
+.category__bg {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -123,19 +140,69 @@ main {
   pointer-events: none;
   will-change: transform;
 }
-.home__block:hover .home__blockBg {
+.category._list:hover .category__bg {
   -ms-transform: translate(0, 0);
       transform: translate(0, 0);
 }
-.home__blockTitle {
+.category__info {
+  position: relative;
+  top: 65%;
+  color: #ffffff;
+  transition: top .2s ease-in-out;
+  will-change: top;
+}
+.category._list:hover .category__info {
+  top: 0;
+}
+.category__infoTitle {
+  display: table;
   max-width: 80%;
   margin: 0 auto;
   font-size: 1vw;
   font-weight: 500;
   text-align: center;
   text-transform: uppercase;
-  text-decoration: underline;
-  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: .024em;
+  color: currentColor;
+}
+.category._list .category__infoTitle::after {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  width: 7px;
+  height: 4px;
+  margin-left: 8px;
+  background: url(../img/arrow-down-wh.png) no-repeat 50% 50%;
+}
+.category__infoTitle span {
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+}
+.category:hover .category__infoTitle::after {
+  -ms-transform: rotate(180deg);
+      transform: rotate(180deg);
+}
+.category:not(._list):hover .category__infoTitle span {
+  border-color: currentColor;
+}
+.category__infoList {
+  max-width: 80%;
+  margin: 20px auto 0;
+  padding: 0;
+  list-style: none;
+}
+.category__infoListItem {
+  margin: 5px 0;
+}
+.category__infoListItem a {
+  font-size: 1vw;
+  text-decoration: none;
+  letter-spacing: .025em;
+  color: currentColor;
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+}
+.category__infoListItem a:hover {
+  border-color: currentColor;
 }
 
 .footer {
