@@ -69,8 +69,8 @@ main {
 }
 .header__profile {
   display: block;
-  width: 28px;
-  height: 28px;
+  width: 2vw;
+  height: auto;
   padding: 0;
   background: none;
   border: none;
@@ -82,7 +82,7 @@ main {
   width: 100%;
 }
 
-.home {
+.section {
   display: -ms-grid;
   display:     grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
@@ -91,6 +91,9 @@ main {
   grid-template-rows: 255px 255px;
   grid-gap: 30px;
   margin: 20px 0 0;
+}
+.section._home {
+  display: none;
 }
 
 .category {
@@ -205,6 +208,35 @@ main {
   border-color: currentColor;
 }
 
+.order__slider {
+  display: -ms-grid;
+  display:     grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 30px;
+  -ms-grid-column-span: 4;
+  -ms-grid-column: 1;
+      grid-column: 1/span 4;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.order__sliderItem {
+  display: inline-block;
+  vertical-align: top;
+  background: #eeeeee;
+}
+
+.order__stage {
+  background: #eeeeee;
+}
+.order__stage._wide {
+  -ms-grid-column-span: 2;
+  -ms-grid-column: 2;
+      grid-column: 2/span 2;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -283,4 +315,14 @@ main {
   font: 500 .9vw/1 'Segui', segoe;
   letter-spacing: .025em;
   color: var(--dark-blue);
+}
+
+@media screen and (min-width: 1800px) {
+  .home {
+    -ms-grid-rows: 30vh 30vh;
+    grid-template-rows: 30vh 30vh;
+  }
+  .category__info {
+    top: 75%;
+  }
 }
