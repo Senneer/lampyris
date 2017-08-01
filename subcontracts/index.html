@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lampyris</title>
   <link rel="stylesheet" href="./css/slick.css">
+  <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css">
   <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
@@ -72,14 +73,89 @@
       </section>
       <section class="section _order">
         <ul class="order__slider">
-          <li class="order__sliderItem"></li>
-          <li class="order__sliderItem"></li>
-          <li class="order__sliderItem"></li>
-          <li class="order__sliderItem"></li>
+          <li class="order__sliderItem">
+            <a href=""><img src="./img/slider1.jpg" alt=""></a>
+          </li>
+          <li class="order__sliderItem">
+            <a href=""><img src="./img/slider2.jpg" alt=""></a>
+          </li>
+          <li class="order__sliderItem">
+            <a href=""><img src="./img/slider3.jpg" alt=""></a>
+          </li>
+          <li class="order__sliderItem">
+            <a href=""><img src="./img/slider4.jpg" alt=""></a>
+          </li>
+          <li class="order__sliderItem">
+            <a href=""><img src="./img/slider4.jpg" alt=""></a>
+          </li>
         </ul>
-        <div class="order__stage _stages"></div>
-        <div class="order__stage _wide _material"></div>
-        <div class="order__stage _total"></div>
+        <div class="order__stage _stages">
+          <p class="order__stageTitle">Этапы услуг</p>
+          <div class="stages__block">
+            <ul class="stages">
+              <li class="stages__item _active">
+                <p class="stages__itemName"><span>Услуга 1</span><span class="stages__itemFake"></span></p>
+                <ul class="stages__itemSubstage">
+                  <li class="stages__itemSubstageItem _active"><button><span>Подуслуга 1</span><span class="_fake"></span></button></li>
+                  <li class="stages__itemSubstageItem _active"><button><span>Подуслуга 2</span><span class="_fake"></span></button></li>
+                  <li class="stages__itemSubstageItem"><button><span>Подуслуга 3</span><span class="_fake"></span></button></li>
+                </ul>
+              </li>
+              <li class="stages__item">
+                <p class="stages__itemName"><span>Услуга 2</span><span class="stages__itemFake"></span></p>
+                <ul class="stages__itemSubstage">
+                  <li class="stages__itemSubstageItem"><button><span>Подуслуга 1</span><span class="_fake"></span></button></li>
+                  <li class="stages__itemSubstageItem"><button><span>Подуслуга 2</span><span class="_fake"></span></button></li>
+                  <li class="stages__itemSubstageItem"><button><span>Подуслуга 3</span><span class="_fake"></span></button></li>
+                </ul>
+              </li>
+              <li class="stages__item">
+                <p class="stages__itemName"><span>Услуга 3</span><span class="stages__itemFake"></span></p>
+                <ul class="stages__itemSubstage">
+                  <li class="stages__itemSubstageItem"><button><span>Подуслуга 1</span><span class="_fake"></span></button></li>
+                  <li class="stages__itemSubstageItem"><button><span>Подуслуга 2</span><span class="_fake"></span></button></li>
+                  <li class="stages__itemSubstageItem"><button><span>Подуслуга 3</span><span class="_fake"></span></button></li>
+                </ul>
+              </li>
+              <li class="stages__item">
+                <p class="stages__itemName"><span>Услуга 4</span><span class="stages__itemFake"></span></p>
+                <ul class="stages__itemSubstage">
+                  <li class="stages__itemSubstageItem"><button><span>Подуслуга 1</span><span class="_fake"></span></button></li>
+                  <li class="stages__itemSubstageItem"><button><span>Подуслуга 2</span><span class="_fake"></span></button></li>
+                  <li class="stages__itemSubstageItem"><button><span>Подуслуга 3</span><span class="_fake"></span></button></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="order__stage _wide _service">
+          <p class="order__stageTitle">Выберите материал</p>
+          <div class="service">
+            <ul class="service__list">
+              <li class="service__listItem"><button class="_selected"><span>1-й материал</span><span class="_check"></span></button></li>
+              <li class="service__listItem"><button><span>2-й материал</span><span class="_check"></span></button></li>
+              <li class="service__listItem"><button><span>3-й материал</span><span class="_check"></span></button></li>
+              <li class="service__listItem"><button><span>4-й материал</span><span class="_check"></span></button></li>
+              <li class="service__listItem"><button><span>5-й материал</span><span class="_check"></span></button></li>
+            </ul>
+          </div>
+          <div class="service__panel">
+            <button class="service__panelCancel">Отменить заказ</button>
+            <form action="" class="service__panelForm">
+              <div class="service__panelFormFile">
+                <input type="file" name="file" id="file">
+                <label for="file">Прикрепить файл</label>
+              </div>
+              <div class="service__panelFormControl">
+                <button class="_back">Назад</button>
+                <button class="_next">Далее</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="order__stage _total">
+          <p class="order__stageTitle">Ваш заказ</p>
+        </div>
       </section>
     </main>
     <footer class="footer">
@@ -92,6 +168,7 @@
     </footer>
   </div>
   <script src="./js/jquery.min.js"></script>
+  <script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
   <script src="./js/slick.min.js"></script>
   <script src="./js/main.js"></script>
 </body>
