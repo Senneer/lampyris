@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 $(document).ready(function () {
   $(".order__slider").slick({
@@ -8,6 +8,20 @@ $(document).ready(function () {
     slidesToScroll: 1
   });
 
+  $(".service__listItem button").on("click", function (e) {
+    e.preventDefault();
+    $(this).toggleClass("_selected");
+  });
+
+  var title = $("._service .order__stageTitle");
+  var service = '';
+  $(".stages__itemSubstageItem button").on("click", function (e) {
+    e.preventDefault();
+    service = $(this).text();
+    title.html(service);
+  });
+
+  // for landing
   var elem = document.getElementsByClassName('land')[0];
   if (elem.addEventListener) {
     if ('onwheel' in document) {
@@ -21,6 +35,8 @@ $(document).ready(function () {
     elem.attachEvent("onmousewheel", onWheel);
   }
 
+  var sliders = [$(".prod__sliderImg ul"), $(".prod__sliderText"), $(".team__dmPeople"), $(".history__slider")];
+
   function onWheel(e) {
     e = e || window.event;
     var delta = e.deltaY || e.detail || e.wheelDelta;
@@ -29,17 +45,24 @@ $(document).ready(function () {
       $(".html, body").animate({ scrollTop: $(".land").offset().top }, 0).animate({ scrollTop: 0 }, 700, "swing", function () {
         $(".land").css("display", "none");
       });
+      $.each(sliders, function (i) {
+        sliders[i].slick("unslick");
+      });
     }
+  }
+
+  function changeLayout(showEl, display, hideEl, scrollEl) {
+    showEl.css("display", display);
+    $(".html, body").animate({ scrollTop: scrollEl.offset().top }, 700, "swing", function () {
+      hideEl.css("display", "none");
+    });
   }
 
   $(".footer__about").on("click", function (e) {
     e.preventDefault();
-    $(".land").css("display", "block");
-    $(".html, body").animate({ scrollTop: $(".land").offset().top }, 700, "swing", function () {
-      $(".wrapper").css("display", "none");
-    });
+    changeLayout($(".land"), "block", $(".wrapper"), $(".land"));
 
-    $(".prod__sliderImg ul").slick({
+    sliders[0].slick({
       dots: true,
       dotsClass: "prod__sliderImgDots",
       infinite: true,
@@ -48,7 +71,7 @@ $(document).ready(function () {
       nextArrow: $(".prod__sliderImgNext"),
       asNavFor: ".prod__sliderText"
     });
-    $(".prod__sliderText").slick({
+    sliders[1].slick({
       dots: false,
       arrows: false,
       draggable: false,
@@ -57,13 +80,13 @@ $(document).ready(function () {
       slidesToScroll: 1,
       asNavFor: ".prod__sliderImg ul"
     });
-    $(".team__dmPeople").slick({
+    sliders[2].slick({
       dots: false,
       infinite: true,
       slidesToShow: 4,
       slidesToScroll: 1
     });
-    $(".history__slider").slick({
+    sliders[3].slick({
       dots: true,
       infinite: false,
       slidesToShow: 1,
@@ -75,9 +98,9 @@ $(document).ready(function () {
 
   $(".about__totop").on("click", function (e) {
     e.preventDefault();
-    $(".wrapper").css("display", "flex");
-    $(".html, body").animate({ scrollTop: $("html, body").offset().top }, 700, "swing", function () {
-      $(".land").css("display", "none");
+    changeLayout($(".wrapper"), "flex", $(".land"), $(".html, body"));
+    $.each(sliders, function (i) {
+      sliders[i].slick("unslick");
     });
   });
 
@@ -91,6 +114,7 @@ $(document).ready(function () {
 });
 
 $(window).on("load", function () {
-  // $(".stages").mCustomScrollbar();
-  // $(".service").mCustomScrollbar();
+  $(".stages__block").mCustomScrollbar();
+  $(".service").mCustomScrollbar();
+  $(".total").mCustomScrollbar();
 });

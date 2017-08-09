@@ -353,7 +353,7 @@ main {
 
   &__block {
     height: calc(100% - 42px);
-    overflow-y: scroll;
+    overflow-y: hidden;
   }
 
   &__item {
@@ -529,7 +529,7 @@ main {
   &__panelCancel {
     margin-right: 60px;
     padding: 0;
-    font: 500 16px/1 $accidental-ff;
+    font: 500 1vw/1 $accidental-ff;
     color: var(--accidental-tc);
     background: none;
     border: none;
@@ -563,7 +563,7 @@ main {
     & label {
       position: relative;
       display: block;
-      font: 400 13px/1 $accidental-ff;
+      font: 400 .9vw/1 $accidental-ff;
       color: var(--accidental-tc);
       border-bottom: 1px solid #ebebeb;
       cursor: pointer;
@@ -590,8 +590,9 @@ main {
   &__panelFormControl {
 
     & button {
+      box-sizing: border-box;
       height: 35px;
-      font: 500 14px/1 $accidental-ff;
+      font: 500 .95vw/1 $accidental-ff;
       text-transform: uppercase;
       letter-spacing: .075em;
       border: none;
@@ -600,6 +601,7 @@ main {
 
       &._next {
         width: 125px;
+        padding: 0 20px;
         color: #ffffff;
         background: #e75152;
         border-radius: 18px;
@@ -608,6 +610,7 @@ main {
         }
       }
       &._back {
+        padding: 0 10px;
         color: var(--accidental-tc);
         background: none;
         &:hover {
@@ -618,12 +621,24 @@ main {
   }
 }
 
+.mCSB_scrollTools .mCSB_draggerRail {
+  background: none;
+}
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  width: 5px;
+  background: #999999;
+}
+
 .service {
   box-sizing: border-box;
+  position: relative;
   height: calc(100% - 50px - 42px);
-  padding: 10px 15px;
+  padding: 10px 0 10px 15px;
   background: #fbfbfb;
-  overflow-y: scroll;
+
+  & .mCSB_inside > .mCSB_container {
+    margin-right: 15px;
+  }
 
   &__list {
     margin: 0;
@@ -643,7 +658,7 @@ main {
       width: 100%;
       height: 40px;
       padding: 0 13px;
-      font: 400 14px/1 $accidental-ff;
+      font: 400 .95vw/1 $accidental-ff;
       color: var(--accidental-tc);
       background: #ffffff;
       border: 1px solid #ebebeb;
@@ -693,8 +708,8 @@ main {
 .total {
   box-sizing: border-box;
   height: calc(100% - 50px - 42px);
-  padding: 10px 15px;
-  overflow-y: scroll;
+  padding: 10px 0 10px 15px;
+  overflow-y: hidden;
 
   &__list {
     margin: 0;
@@ -709,11 +724,11 @@ main {
     margin: 0 0 15px;
 
     & ._name {
-      font: 14px "Lato-Light";
+      font: .95vw "Lato-Light";
       color: #c6c6c6;
     }
     & ._cost {
-      font-size: 13px;
+      font-size: .9vw;
       font-weight: 700;
       color: var(-accidental-tc);
     }
@@ -732,13 +747,13 @@ main {
 
     & p {
       margin: 0;
-      font-size: 13px;
+      font-size: .95vw;
       font-weight: 700;
       letter-spacing: .025em;
       color: #c6c6c6;
 
       &._number {
-        font-size: 18px;
+        font-size: 1.05vw;
         font-weight: 700;
         color: var(--accidental-tc);
       }
@@ -849,7 +864,7 @@ main {
 }
 
 ._sectionTitle {
-  font-size: 82px;
+  font-size: 4.3vw;
   font-weight: 700;
   letter-spacing: .05em;
 }
@@ -932,17 +947,20 @@ main {
   }
 
   &__slider {
-    display: flex;
+    display: table;
     width: 100%;
+    font-size: 0;
   }
 
   &__sliderText {
-    margin: 0 37px 0 0;
+    display: inline-block;
+    vertical-align: top;
+    width: 54%;
+    max-width: 930px;
+    margin: 0 10px 0 0;
     padding: 0;
     list-style: none;
-    font-size: 21px;
-    width: 100%;
-    max-width: 930px;
+    font-size: 1.1vw;
   }
 
   &__sliderTextItem {
@@ -969,7 +987,9 @@ main {
   }
 
   &__sliderImg {
-    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+    width: 44%;
     max-width: 767px;
     margin-top: 50px;
 
@@ -981,7 +1001,7 @@ main {
   &__sliderImgList {
     display: inline-block;
     vertical-align: middle;
-    width: 100%;
+    width: 90%;
     max-width: 690px;
     margin: 0;
     padding: 0;
@@ -1050,7 +1070,6 @@ main {
 
   &__info {
     display: flex;
-    justify-content: space-between;
     max-width: 930px;
     margin: 0;
     padding: 0;
@@ -1059,12 +1078,16 @@ main {
 
   &__infoItem {
 
+    &:not(:last-child) {
+      margin-right: 10%;
+    }
+
     & p {
       margin: 0;
-      font-size: 24px;
+      font-size: 1.2vw;
 
       &._number {
-        font-size: 134px;
+        font-size: 7vw;
         font-weight: 700;
         color: #ffcc00;
       }
@@ -1083,9 +1106,9 @@ main {
 
   &__subtitle {
     width: 100%;
-    max-width: 1130px;
-    margin: 35px auto 90px;
-    font-size: 21px;
+    max-width: 60vw;
+    margin: 1.5em auto 4em;
+    font-size: 1.1vw;
     text-align: center;
   }
 
@@ -1107,7 +1130,7 @@ main {
     & button {
       display: block;
       padding: 0;
-      font: 400 30px/1 $accidental-ff;
+      font: 400 1.4vw/1 $accidental-ff;
       color: var(--accidental-tc);
       background: none;
       border: none;
@@ -1126,11 +1149,12 @@ main {
   }
 
   &__dmPeople {
+    box-sizing: border-box;
     position: relative;
     width: 100%;
-    max-width: 1648px;
+    max-width: 1738px;
     margin: 20px auto 0;
-    padding: 0;
+    padding: 0 45px;
     list-style: none;
 
     & li {
@@ -1150,17 +1174,18 @@ main {
       transform: translateY(-50%);
       width: 28px;
       height: 43px;
+      padding: 0;
       font-size: 0;
       border: none;
       cursor: pointer;
       outline: none;
 
       &.slick-prev {
-        left: -45px;
+        left: 0;
         background: url(../img/arrow-left-black.png) no-repeat 50% 50%/contain;
       }
       &.slick-next {
-        right: -45px;
+        right: 0;
         background: url(../img/arrow-right-black.png) no-repeat 50% 50%/contain;
       }
     }
@@ -1177,6 +1202,7 @@ main {
     }
 
     & > div {
+      box-sizing: border-box;
       position: absolute;
       top: 0;
       left: 0;
@@ -1186,6 +1212,7 @@ main {
       flex-direction: column;
       width: 100%;
       height: 100%;
+      padding: 0 20px;
       background: fade-out(#333333, .2);
 
       & > p {
@@ -1208,7 +1235,7 @@ main {
 
     & span {
       display: block;
-      font-size: 24px;
+      font-size: 1.3vw;
       letter-spacing: .05em;
       &._surname {
         text-transform: uppercase;
@@ -1230,11 +1257,11 @@ main {
 
     & p {
       margin: 0;
-      font-size: 21px;
+      font-size: 1.1vw;
       line-height: 1.2;
       &._title {
         margin: 0 0 20px;
-        font-size: 82px;
+        font-size: 4.3vw;
         font-weight: 700;
         line-height: 1;
       }
@@ -1245,7 +1272,7 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 18px;
-    margin: 0;
+    margin: 0 0 0 20px;
     padding: 0;
     list-style: none;
   }
@@ -1271,8 +1298,9 @@ main {
 
   &__subtitle {
     width: 100%;
-    max-width: 927px;
+    max-width: 50vw;
     margin: 20px auto 50px;
+    font-size: 1vw;
     line-height: 1.2;
     letter-spacing: .025em;
   }
@@ -1364,6 +1392,7 @@ main {
     top: 250px;
     width: 100%;
     margin: 0;
+    font-size: 1vw;
     text-align: center;
     z-index: 2;
   }
@@ -1610,9 +1639,11 @@ main {
   box-shadow: 0 -3px 5px -2px fade-out(#000000, .58);
 
   & .limit {
+    box-sizing: border-box;
     width: 100%;
     max-width: 1648px;
     margin: 0 auto;
+    padding: 0 20px;
   }
 
   &__con {
@@ -1726,6 +1757,47 @@ main {
     }
   }
 
+  .service {
+    &__listItem {
+      & button {
+        font-size: 16px;
+      }
+    }
+    &__panelCancel {
+      font-size: 16px;
+    }
+    &__panelFormFile {
+      & label {
+        font-size: 14px;
+      }
+    }
+    &__panelFormControl {
+      & button {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .total {
+    &__listItem {
+      & ._name {
+        font-size: 16px;
+      }
+    }
+    &__panel {
+      & p {
+        font-size: 15px;
+        &._number {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  ._sectionTitle {
+    font-size: 82px;
+  }
+
   .greet {
     &__title {
       font-size: 150px;
@@ -1738,3 +1810,128 @@ main {
     }
   }
 }
+
+@media screen and (max-width: 1400px) {
+  .wrapper {
+    box-sizing: border-box;
+    // justify-content: space-between;
+    padding-top: 15px;
+  }
+  .section {
+    grid-template-rows: 220px 220px;
+    grid-gap: 10px;
+  }
+
+  .order {
+    &__slider {
+      margin: 0;
+    }
+    &__sliderItem {
+      padding: 0;
+    }
+  }
+
+  .service {
+    height: calc((100% - 40px) - 42px);
+    &__panel {
+      height: 40px;
+    }
+    &__panelFormControl {
+      & button {
+        height: 25px;
+        &._next {
+          width: 100px;
+        }
+      }
+    }
+    &__listItem {
+      & button {
+        height: 30px;
+      }
+    }
+  }
+
+  .footer {
+    position: relative;
+    left: auto;
+    transform: none;
+    margin-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .greet {
+    box-sizing: border-box;
+    padding: 160px 20px 80px;
+  }
+
+  .prod {
+    padding: 125px 0 20px;
+    &__sliderTextItem {
+      padding-left: 180px;
+
+      &::before {
+        width: 150px;
+      }
+    }
+    &__sliderImg {
+      margin-top: 30px;
+    }
+    &__sliderImgList {
+      & li {
+        margin: 0 5px;
+      }
+    }
+
+    & .prod__sliderImgDots {
+      padding: 0 5px;
+    }
+  }
+
+  .team {
+
+    &__eng {
+      margin-top: 100px;
+      padding-right: 20px;
+    }
+  }
+
+  .about {
+    padding: 150px 0 80px;
+  }
+
+  .history {
+    &__slider {
+      & .slick-arrow {
+        top: 290px;
+        &.slick-prev {
+          left: 73%;
+        }
+        &.slick-next {
+          left: 81%;
+        }
+      }
+    }
+  }
+
+  .partners {
+    box-sizing: border-box;
+    padding: 130px 20px;
+  }
+}
+
+// @media screen and (max-device-aspect-ratio: 4/3) {
+//   .wrapper {
+//     box-sizing: border-box;
+//     justify-content: center;
+//   }
+//   .section {
+//     grid-template-rows: 250px 250px;
+//     grid-gap: 30px;
+//   }
+//   .footer {
+//     position: absolute;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     padding-bottom: 35px;
+//   }
+// }
