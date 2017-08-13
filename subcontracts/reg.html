@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lampyris | Вход в личный кабинет</title>
+  <link rel="stylesheet" href="./css/slick.css">
+  <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css">
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+  <div class="wrapper _log">
+    <ul class="log__slider">
+      <li class="log__sliderItem">
+        <div>
+          <p>«Наличие собственного конструкторского отдела дает возможность легко справляться с нестандартными задачами»</p>
+          <a href="">о заводе</a>
+        </div>
+      </li>
+      <li class="log__sliderItem">
+        <div>
+          <p>«Наличие собственного конструкторского отдела дает возможность легко справляться с нестандартными задачами»</p>
+          <a href="">о заводе</a>
+        </div>
+      </li>
+      <li class="log__sliderItem">
+        <div>
+          <p>«Наличие собственного конструкторского отдела дает возможность легко справляться с нестандартными задачами»</p>
+          <a href="">о заводе</a>
+        </div>
+      </li>
+      <li class="log__sliderItem">
+        <div>
+          <p>«Наличие собственного конструкторского отдела дает возможность легко справляться с нестандартными задачами»</p>
+          <a href="">о заводе</a>
+        </div>
+      </li>
+    </ul>
+    <div class="log__main">
+      <a href="./index.html" class="log__close"></a>
+      <div class="log__block _login">
+        <div class="log__title">Вход в личный кабинет</div>
+        <p class="log__subtitle">Войдите чтобы управлять заказом</p>
+        <form action="" class="log__form" id="login">
+          <div class="log__formItem _name">
+            <input type="text" name="name" id="login-name" class="log__formItemInp">
+            <label for="login-name">Логин</label>
+          </div>
+          <div class="log__formItem _pass">
+            <input type="password" name="password" id="login-pass" class="log__formItemInp">
+            <label for="login-pass">Пароль</label>
+          </div>
+          <button class="log__btn">Войти</button>
+          <p class="log__text">Забыли пароль? <a href="" class="log__layout _recover">Восстановить</a></p>
+        </form>
+        <p class="log__text _atbot">Нет аккаунта? <a href="" class="log__layout _registration">Регистрация</a></p>
+      </div>
+      <div class="log__block _recover">
+        <button class="log__back"></button>
+        <div class="log__title">Регистрация</div>
+        <p class="log__subtitle">Пароль будет отправлен на e-mail адрес</p>
+        <form action="" class="log__form" id="recover">
+          <div class="log__formItem _mail">
+            <input type="email" name="mail" id="recover-email" class="log__formItemInp">
+            <label for="recover-mail">Ваша почта</label>
+          </div>
+          <button class="log__btn">ОТправить</button>
+        </form>
+        <p class="log__text _atbot">Нет аккаунта? <a href="" class="log__layout _registration">Регистрация</a></p>
+      </div>
+      <div class="log__block _reg">
+        <div class="log__title">Регистрация</div>
+        <form action="" class="log__form" id="reg">
+          <div class="log__section">
+            <p class="log__sectionTitle">Информация о заказчике</p>
+            <div class="log__formItem">
+              <input type="text" name="name" id="reg-name" class="log__formItemInp">
+              <label for="reg-name">Имя</label>
+            </div>
+            <div class="log__formItem">
+              <input type="text" name="surname" id="reg-surname" class="log__formItemInp">
+              <label for="reg-surname">Фамилия</label>
+            </div>
+            <div class="log__formItem">
+              <input type="text" name="father" id="reg-father" class="log__formItemInp">
+              <label for="reg-father">Отчество</label>
+            </div>
+            <div class="log__formItem">
+              <input type="text" name="phone" id="reg-phone" class="log__formItemInp">
+              <label for="reg-phone">Телефон</label>
+            </div>
+          </div>
+          <div class="log__section">
+            <input type="radio" name="comp-type" id="individ">
+            <input type="radio" name="comp-type" id="entity">
+            <p class="log__sectionTitle">Информация о доставке</p>
+            <div class="log__formItem _wide">
+              <input type="text" name="address" id="reg-address" class="log__formItemInp">
+              <label for="reg-address">Адрес доставки</label>
+            </div>
+            <div class="log__formItem _wide _entity">
+              <input type="text" name="compname" id="reg-compname" class="log__formItemInp">
+              <label for="reg-compname">Название организации</label>
+            </div>
+            <div class="log__formItem _wide _entity">
+              <input type="text" name="inn" id="reg-inn" class="log__formItemInp">
+              <label for="reg-inn">ИНН</label>
+            </div>
+            <label for="individ" class="log__compType _checked"><span>Физическое лицо</span><span class="_fake"></span></label>
+            <label for="entity" class="log__compType"><span>Юридическое лицо</span><span class="_fake"></span></label>
+          </div>
+          <button class="log__btn"><span>Далее</span></button>
+        </form>
+        <p class="log__text _atbot">Есть аккаунт? <a href="" class="log__layout _login">Войти</a></p>
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="./js/slick.min.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
