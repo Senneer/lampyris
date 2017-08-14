@@ -19,7 +19,9 @@ $(document).ready(function () {
 
     $(".service__listItem button").on("click", function (e) {
       e.preventDefault();
-      $(this).toggleClass("_selected");
+      $(this).parent().siblings().find("button").removeClass("_selected");
+      $(this).addClass("_selected");
+      $(".service__panelFormControl button._next").removeClass("_disable");
     });
 
     var title = $("._service .order__stageTitle");
@@ -143,11 +145,15 @@ $(document).ready(function () {
     });
     $(".log__back").on("click", function(e) {
       e.preventDefault();
-      changeWindow($(this), $(".log__block._login"));
+      changeWindow($(this), $(".log__block._reg"));
     });
     $(".log__layout._login").on("click", function(e) {
       e.preventDefault();
       changeWindow($(this), $(".log__block._login"));
+    });
+    $(".log__btn._next").on("click", function(e) {
+      e.preventDefault();
+      changeWindow($(this), $(".log__block._recover"));
     });
 
     $(".log__compType").on("click", function() {
