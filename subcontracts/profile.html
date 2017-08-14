@@ -50,46 +50,226 @@
       </div>
       <a href="" class="sidebar__exit">Выход</a>
     </aside>
-    <main class="profile">
-      <div class="profile__header _tile">
-        <form action="" class="profile__headerSearch"><input type="text" placeholder="Введите номер заказа..."></form>
-        <div class="profile__headerNotif">
-          <button>
-            <img src="./img/bell.png" alt="">
-            <span class="count">6</span>
-          </button>
-          <div class="notif__popup">
-            <p class="notif__popupTitle">Оповещения</p>
-            <ul class="notif__popupList">
-              <li>
-                <p class="_name">Начался этап резки</p>
-                <p class="_date">Март 5, 08.30</p>
-              </li>
-              <li>
-                <p class="_name">Закончился этап резки</p>
-                <p class="_date">Март 20, 13.00</p>
-              </li>
-              <li>
-                <p class="_name">Начался этап гибки</p>
-                <p class="_date">Март 21, 08.30</p>
-              </li>
-              <li>
-                <p class="_name">Начался этап резки</p>
-                <p class="_date">Март 5, 08.30</p>
-              </li>
-              <li>
-                <p class="_name">Закончился этап резки</p>
-                <p class="_date">Март 20, 13.00</p>
-              </li>
-              <li>
-                <p class="_name">Начался этап гибки</p>
-                <p class="_date">Март 21, 08.30</p>
-              </li>
-            </ul>
-            </div>
+    <header class="profile__header _tile">
+      <form action="" class="profile__headerSearch"><input type="text" placeholder="Введите номер заказа..."></form>
+      <div class="profile__headerNotif">
+        <button>
+          <img src="./img/bell.png" alt="">
+          <span class="count">6</span>
+        </button>
+        <div class="notif__popup">
+          <p class="notif__popupTitle">Оповещения</p>
+          <ul class="notif__popupList">
+            <li>
+              <p class="_name">Начался этап резки</p>
+              <p class="_date">Март 5, 08.30</p>
+            </li>
+            <li>
+              <p class="_name">Закончился этап резки</p>
+              <p class="_date">Март 20, 13.00</p>
+            </li>
+            <li>
+              <p class="_name">Начался этап гибки</p>
+              <p class="_date">Март 21, 08.30</p>
+            </li>
+            <li>
+              <p class="_name">Начался этап резки</p>
+              <p class="_date">Март 5, 08.30</p>
+            </li>
+            <li>
+              <p class="_name">Закончился этап резки</p>
+              <p class="_date">Март 20, 13.00</p>
+            </li>
+            <li>
+              <p class="_name">Начался этап гибки</p>
+              <p class="_date">Март 21, 08.30</p>
+            </li>
+          </ul>
         </div>
       </div>
-      ul.profile
+    </header>
+    <main class="profile">
+      <ul class="profile__info">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <div class="profile__cntrls">
+        <ul class="profile__cntrlsTabs">
+          <li><button class="_orders" data-href=".orders"><span>Заказы</span><span class="_fake">1</span></button></li>
+          <li><button class="_req _current" data-href=".req"><span>Активные заявки</span></button></li>
+          <li><button class="_archive" data-href=".archive"><span>Архив</span></button></li>
+        </ul>
+        <a href="" class="profile__cntrlsNeworder"><span>Новый заказ</span><span class="_icon">+</span></a>
+      </div>
+      <div class="profile__lists">
+        <div class="req list">
+          <ul class="req__titles _headers">
+            <li>Номер заявки</li>
+            <li>Дата заказа</li>
+            <li>Сумма к оплате</li>
+            <li>Статус заказа</li>
+            <li>Удалить</li>
+          </ul>
+          <ul class="req__list">
+            <li class="req__listItem">
+              <ul class="req__listItemInfo">
+                <li><button class="reveal">№<span>120380182</span></button></li>
+                <li>02.03.2017</li>
+                <li>89 459 Р</li>
+                <li>
+                  <p class="_awaits">ожидается оплаты</p>
+                </li>
+                <li>
+                  <button class="_del"></button>
+                </li>
+              </ul>
+            </li>
+            <li class="req__listItem">
+              <ul class="req__listItemInfo">
+                <li><button class="reveal">№<span>120380182</span></button></li>
+                <li>02.03.2017</li>
+                <li>89 459 Р</li>
+                <li>
+                  <p class="_awaits">ожидается оплаты</p>
+                </li>
+                <li>
+                  <button class="_del"></button>
+                </li>
+              </ul>
+            </li>
+            <li class="req__listItem">
+              <ul class="req__listItemInfo">
+                <li><button class="reveal">№<span>120380182</span></button></li>
+                <li>02.03.2017</li>
+                <li>89 459 Р</li>
+                <li>
+                  <p class="_inprogress">в обработке</p>
+                </li>
+                <li>
+                  <button class="_del"></button>
+                </li>
+              </ul>
+            </li>
+            <li class="req__listItem">
+              <ul class="req__listItemInfo">
+                <li><button class="reveal">№<span>120380182</span></button></li>
+                <li>02.03.2017</li>
+                <li>89 459 Р</li>
+                <li>
+                  <p class="_awaits">ожидается оплаты</p>
+                </li>
+                <li>
+                  <button class="_del"></button>
+                </li>
+              </ul>
+            </li>
+            <li class="req__listItem">
+              <ul class="req__listItemInfo">
+                <li><button class="reveal">№<span>120380182</span></button></li>
+                <li>02.03.2017</li>
+                <li>89 459 Р</li>
+                <li>
+                  <p class="_awaits">ожидается оплаты</p>
+                </li>
+                <li>
+                  <button class="_del"></button>
+                </li>
+              </ul>
+            </li>
+            <li class="req__listItem">
+              <ul class="req__listItemInfo">
+                <li><button class="reveal">№<span>120380182</span></button></li>
+                <li>02.03.2017</li>
+                <li>89 459 Р</li>
+                <li>
+                  <p class="_awaits">ожидается оплаты</p>
+                </li>
+                <li>
+                  <button class="_del"></button>
+                </li>
+              </ul>
+            </li>
+            <li class="req__listItem">
+              <ul class="req__listItemInfo">
+                <li><button class="reveal">№<span>120380182</span></button></li>
+                <li>02.03.2017</li>
+                <li>89 459 Р</li>
+                <li>
+                  <p class="_awaits">ожидается оплаты</p>
+                </li>
+                <li>
+                  <button class="_del"></button>
+                </li>
+              </ul>
+            </li>
+            <li class="req__listItem">
+              <ul class="req__listItemInfo">
+                <li><button class="reveal">№<span>120380182</span></button></li>
+                <li>02.03.2017</li>
+                <li>89 459 Р</li>
+                <li>
+                  <p class="_awaits">ожидается оплаты</p>
+                </li>
+                <li>
+                  <button class="_del"></button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="req__listItemService">
+            <li>
+              <p class="_name">Наименование</p>
+              <ul>
+                <li><span class="_name">Свойство:</span><span class="_data">Аттрибут</span></li>
+              </ul>
+            </li>
+            <li>
+              <p class="_name">Наименование</p>
+              <ul>
+                <li><span class="_name">Свойство:</span><span class="_data">Аттрибут</span></li>
+                <li><span class="_name">Свойство:</span><span class="_data">Аттрибут</span></li>
+              </ul>
+            </li>
+            <li>
+              <p class="_name">Наименование</p>
+              <ul>
+                <li><span class="_name">Свойство:</span><span class="_data">Аттрибут</span></li>
+                <li><span class="_name">Свойство:</span><span class="_data">Аттрибут</span></li>
+                <li><span class="_name">Свойство:</span><span class="_data">Аттрибут</span></li>
+              </ul>
+            </li>
+            <li>
+              <p class="_name">Наименование</p>
+              <ul>
+                <li><span class="_name">Свойство:</span><span class="_data">Аттрибут</span></li>
+                <li><span class="_name">Свойство:</span><span class="_data">Аттрибут</span></li>
+                <li><span class="_name">Свойство:</span><span class="_data">Аттрибут</span></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="orders list">
+          <ul class="orders__titles _headers">
+            <li>Номер заказа</li>
+            <li>Станок</li>
+            <li>Этап</li>
+            <li>Прямая трансляция</li>
+            <li>Прогресс</li>
+          </ul>
+          <ul class="orders__list">
+            <li class="orders__listItem">
+              <p class="number">№<span>120380182</span></p>
+              <ul class="orders__listItemInfo">
+                <li>Trumatic7000</li>
+                <li>Резка</li>
+                <li class="_video">Трансляция завершена</li>
+                <li class="_progress _done"><span class="_text">Готово к отправке!</span><span class="_bar"></span></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
     </main>
   </div>
   <script src="./js/jquery.min.js"></script>

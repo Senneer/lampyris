@@ -182,6 +182,10 @@ $(document).ready(function () {
       autoplaySpeed: 4000
     });
   } else if ($(".wrapper._profile").length) {
+    var addLine = function addLine() {
+      $magicLine.width($(".profile__cntrlsTabs li button._current").width()).css("left", $(".profile__cntrlsTabs li button._current").position().left).data("origLeft", $magicLine.position().left).data("origWidth", $magicLine.width());
+    };
+
     $("html, body").on("click", function () {
       $(".notif__popup").fadeOut(200);
     });
@@ -191,6 +195,51 @@ $(document).ready(function () {
     $(".profile__headerNotif button").on("click", function (e) {
       e.preventDefault();
       $(".notif__popup").fadeToggle(200);
+    });
+
+    var $el, leftPos, newWidth;
+    var $mainNav = $(".profile__cntrlsTabs");
+
+    $mainNav.append("<li class='_underline'></li>");
+    var $magicLine = $("li._underline");
+
+    addLine();
+
+    $(".profile__cntrlsTabs li button").hover(function () {
+      $el = $(this);
+      leftPos = $el.position().left;
+      newWidth = $el.parent().width();
+      $magicLine.stop().animate({
+        left: leftPos,
+        width: newWidth
+      }, 200);
+    }, function () {
+      $magicLine.stop().animate({
+        left: $magicLine.data("origLeft"),
+        width: $magicLine.data("origWidth")
+      }, 200);
+    });
+
+    $(".profile__cntrlsTabs li button").on("click", function (e) {
+      e.preventDefault();
+      if ($(this).hasClass("_current") !== true) {
+        $(this).parents(".profile__cntrlsTabs").find("button").removeClass("_current");
+        $(this).addClass("_current");
+        addLine();
+        $($(this).attr("data-href")).fadeIn(200).siblings().css("display", "none");
+      }
+    });
+
+    var reqService = $(".req__listItemService");
+    $(".req__listItemInfo .reveal").on("click", function (e) {
+      e.preventDefault();
+      var parent = $(this).parents(".req__listItem");
+      if (parent.hasClass("_disclose") === true) {
+        parent.removeClass("_disclose").find(".req__listItemService").remove();
+      } else {
+        parent.siblings().removeClass("_disclose");
+        parent.addClass("_disclose").append($(reqService).css("display", "grid"));
+      }
     });
 
     $(window).on("load", function () {
