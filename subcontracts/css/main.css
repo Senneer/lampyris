@@ -2670,7 +2670,6 @@ main {
   grid-gap: 10px;
   -ms-flex-align: center;
   align-items: center;
-  padding: 30px 0;
   border-top: 1px solid #f1f2f4;
 }
 .orders__listItem .number {
@@ -2683,11 +2682,13 @@ main {
   display:     grid;
   -ms-grid-columns: 1fr 1fr 2fr 2fr;
   grid-template-columns: 1fr 1fr 2fr 2fr;
+  -ms-grid-column: 2;
+  grid-column-start: 2;
   grid-gap: 10px;
   -ms-flex-align: center;
   align-items: center;
   margin: 0;
-  padding: 0;
+  padding: 20px 0;
   list-style: none;
   font-size: 14px;
   font-family: 'Lato';
@@ -2725,7 +2726,7 @@ main {
   position: absolute;
   top: 0;
   left: 0;
-  width: 50%;
+  width: 0;
   height: 100%;
   background: #49bb7b;
   border-radius: 4px;

@@ -247,6 +247,17 @@ $(document).ready(function () {
       }
     });
 
+    $.each($("._progress ._bar"), function(i, el) {
+      var ready = $(el).attr("data-ready");
+      var text = $(el).siblings("._progress ._text");
+      if (ready === "100%") {
+        $(text).html("Готово к отправке").parent().addClass("_done");
+      } else {
+        $(text).html(ready);
+      }
+      $(el).css("width", $(this).attr("data-ready"));
+    });
+
     $(window).on("load", function () {
       $(".notif__popupList").mCustomScrollbar();
     });
