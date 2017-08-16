@@ -228,9 +228,13 @@ main {
 }
 .category__infoList {
   max-width: 80%;
-  margin: 20px auto 0;
+  margin: 25% auto 0;
   padding: 0;
   list-style: none;
+  transition: margin .2s ease-in-out;
+}
+.category:hover .category__infoList {
+  margin-top: 20px;
 }
 .category__infoListItem {
   margin: 5px 0;
@@ -2902,9 +2906,6 @@ main {
   .section {
     -ms-grid-rows: 30vh 30vh;
     grid-template-rows: 30vh 30vh;
-  }
-  .category__info {
-    top: 75%;
   }
   .service__listItem button {
     font-size: 16px;

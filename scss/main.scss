@@ -235,9 +235,13 @@ main {
 
   &__infoList {
     max-width: 80%;
-    margin: 20px auto 0;
+    margin: 25% auto 0;
     padding: 0;
     list-style: none;
+    transition: margin .2s ease-in-out;
+    .category:hover & {
+      margin-top: 20px;
+    }
   }
   &__infoListItem {
     margin: 5px 0;
@@ -2979,7 +2983,7 @@ main {
   .category {
 
     &__info {
-      top: 75%;
+      // top: 75%;
     }
   }
 
