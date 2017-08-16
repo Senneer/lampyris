@@ -202,6 +202,7 @@ $(document).ready(function () {
     });
 
     $(".log__slider").slick({
+      draggable: false,
       dots: true,
       arrows: false,
       infinite: true,

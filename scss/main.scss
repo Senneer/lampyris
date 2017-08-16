@@ -464,7 +464,9 @@ main {
     padding: 0;
     list-style: none;
 
-    & .slick-list {
+    & .slick-list,
+    & .slick-track {
+      height: 100%;
       max-height: 100%;
     }
 
@@ -512,10 +514,13 @@ main {
     display: inline-block;
     vertical-align: top;
     padding: 0 15px;
+    outline: none;
 
     & a {
-      display: table;
+      display: block;
       width: 100%;
+      height: 100%;
+      outline: none;
 
       & img {
         display: block;
@@ -1535,7 +1540,7 @@ main {
     width: 100%;
     max-width: 50vw;
     margin: 20px auto 50px;
-    font-size: 1vw;
+    font-size: 1.1vw;
     line-height: 1.2;
     letter-spacing: .025em;
   }
@@ -1592,6 +1597,7 @@ main {
       margin: 0 auto;
       border: 3px solid #6c6d6f;
       border-radius: 50%;
+      transition: border-color 0.1s linear;
 
       &::after {
         content: "";
@@ -3239,7 +3245,6 @@ main {
 @media screen and (max-width: 1400px) {
   .wrapper {
     box-sizing: border-box;
-    // justify-content: space-between;
     padding-top: 15px;
 
     &._log,
@@ -3254,10 +3259,10 @@ main {
 
   .order {
     &__slider {
-      margin: 0;
+      margin: 0 -5px;
     }
     &__sliderItem {
-      padding: 0;
+      padding: 0 5px;
     }
   }
 
@@ -3346,5 +3351,19 @@ main {
   .partners {
     box-sizing: border-box;
     padding: 130px 20px;
+  }
+
+  ._reg {
+    & .log__form {
+      margin-top: 20px;
+    }
+  }
+
+  .log__text {
+    &._atbot {
+      box-sizing: border-box;
+      padding-right: 10px;
+      text-align: right;
+    }
   }
 }
