@@ -90,7 +90,23 @@
     </header>
     <main class="profile">
       <ul class="profile__info">
-        <li></li>
+        <li class="discount">
+          <p class="discount__title">Скидка</p>
+          <p class="discount__subtitle">До скидки осталось <span>400 000 Р</span></p>
+          <div class="discount__circle" data-diag-fill="40">
+            <svg width="150px" height="150px" viewBox="0 0 42 42" class="discount__diag">
+              <linearGradient id="linearColors" x1="0.5" y1="1" x2="0.5" y2="0">
+                <stop offset="0%" stop-color="#9fe8d9"></stop>
+                <stop offset="100%" stop-color="#52c5e3"></stop>
+              </linearGradient>
+              <circle cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#d3eaf1" stroke-width="5" stroke-dasharray="75 25" stroke-dashoffset="62.5" stroke-linecap="round"></circle>
+
+              <circle id="bar" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="url(#linearColors)" stroke-width="5" stroke-dasharray="0 100" stroke-dashoffset="62.5" stroke-linecap="round"></circle>
+            </svg>
+            <div class="discount__arrow"></div>
+            <div class="discount__count">399 999</div>
+          </div>
+        </li>
         <li class="progress">
           <p class="progress__perc">32.1%</p>
           <p class="progress__subtitle">Готовность заказа <span>120380182</span></p>

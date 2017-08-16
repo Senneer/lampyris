@@ -258,6 +258,29 @@ $(document).ready(function () {
       $(el).css("width", $(this).attr("data-ready"));
     });
 
+    function fillDiag() {
+      var val = parseInt($(".discount__circle").attr("data-diag-fill"));
+      var $circle = $('.discount__diag #bar');
+
+      if (isNaN(val)) {
+        val = 0;
+      } else {
+
+        if (val < 0) { val = 0;}
+        if (val > 100) { val = 100;}
+
+        var newperc = 75*(val/100); // 75 принимаем как 100%
+        var perc = newperc + " " + (100-newperc);
+
+        var arrowDeg = 270*(val/100)-135;
+
+        $circle.css("stroke-dasharray", perc);
+        $(".discount__arrow").css("transform", "translate(-50%, -50%) rotate(" + arrowDeg + "deg)");
+      }
+    }
+
+    fillDiag();
+
     $(window).on("load", function () {
       $(".notif__popupList").mCustomScrollbar();
     });

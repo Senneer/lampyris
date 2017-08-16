@@ -2500,6 +2500,63 @@ main {
       background: #ffffff;
       border-radius: 6px;
       box-shadow: 0 10px 20px 0 fade-out(#00ade4, .85);
+      &.discount {
+        padding: 15px 30px;
+        & .discount__title {
+          margin: 0;
+          font-size: 16px;
+          font-weight: 500;
+          color: #53c6ea;
+        }
+        & .discount__subtitle {
+          margin: 10px 0;
+          font-size: 14px;
+        }
+        & .discount__circle {
+          position: relative;
+          display: table;
+          margin: 0 auto;
+        }
+        & .discount__diag {
+          display: block;
+          margin: 0 auto;
+
+          & #bar {
+
+          }
+        }
+        & .discount__arrow {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) rotate(-135deg);
+          width: 50px;
+          height: 50px;
+          background: #55c7e3;
+          border: 5px solid #e4f6fb;
+          border-radius: 50%;
+          &::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-bottom: 15px solid #55c7e3;
+            border-right: 10px solid transparent;
+            border-left: 10px solid transparent;
+          }
+        }
+        & .discount__count {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          margin: 0;
+          font-size: 12px;
+          color: #ffffff;
+        }
+      }
+
       &.progress {
         padding: 15px 30px;
         & .progress__perc {

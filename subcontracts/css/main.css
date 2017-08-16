@@ -2402,6 +2402,61 @@ main {
   border-radius: 6px;
   box-shadow: 0 10px 20px 0 rgba(0, 173, 228, .15);
 }
+.profile__info > li.discount {
+  padding: 15px 30px;
+}
+.profile__info > li.discount .discount__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #53c6ea;
+}
+.profile__info > li.discount .discount__subtitle {
+  margin: 10px 0;
+  font-size: 14px;
+}
+.profile__info > li.discount .discount__circle {
+  position: relative;
+  display: table;
+  margin: 0 auto;
+}
+.profile__info > li.discount .discount__diag {
+  display: block;
+  margin: 0 auto;
+}
+.profile__info > li.discount .discount__arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%) rotate(-135deg);
+      transform: translate(-50%, -50%) rotate(-135deg);
+  width: 50px;
+  height: 50px;
+  background: #55c7e3;
+  border: 5px solid #e4f6fb;
+  border-radius: 50%;
+}
+.profile__info > li.discount .discount__arrow::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+  border-bottom: 15px solid #55c7e3;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+}
+.profile__info > li.discount .discount__count {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: 12px;
+  color: #ffffff;
+}
 .profile__info > li.progress {
   padding: 15px 30px;
 }
