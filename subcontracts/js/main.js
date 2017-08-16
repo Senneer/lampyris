@@ -26,7 +26,6 @@ $(document).ready(function () {
 
     $(".category__infoListItem a").on("click", function (e) {
       e.preventDefault();
-      // var service = $(this).html();
       $(".section._home").css("display", "none");
       $(".section._order").css("display", "grid");
 
@@ -36,6 +35,34 @@ $(document).ready(function () {
         slidesToShow: 4,
         slidesToScroll: 1
       });
+    });
+
+    $(".projects").slick({
+      dots: true,
+      arrows: false,
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    });
+
+    $(".projects__showall").on("click", function (e) {
+      e.preventDefault();
+      $(".projects__all").css("display", "flex");
+    });
+    $(".projects__allBack").on("click", function (e) {
+      e.preventDefault();
+      $(".projects__all").css("display", "none");
+    });
+    $.each($(".projects__allList li"), function (i, el) {
+      $(el).find("button").on("click", function (e) {
+        e.preventDefault();
+        $(".projects__all").css("display", "none");
+        $(".projects").slick('slickGoTo', i, false);
+      });
+    });
+
+    $(".category._list .category__infoTitle").on("click", function () {
+      $(this).parents(".category").toggleClass("_open");
     });
 
     $(".service__listItem button").on("click", function (e) {
