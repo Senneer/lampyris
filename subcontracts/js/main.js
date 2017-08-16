@@ -255,12 +255,12 @@ $(document).ready(function () {
       }
     });
 
-    var reqService = $(".req__listItemService");
+    var reqService = $(".req__listItemServiceInfo");
     $(".req__listItemInfo .reveal").on("click", function (e) {
       e.preventDefault();
       var parent = $(this).parents(".req__listItem");
       if (parent.hasClass("_disclose") === true) {
-        parent.removeClass("_disclose").find(".req__listItemService").remove();
+        parent.removeClass("_disclose").find(".req__listItemServiceInfo").remove();
       } else {
         parent.siblings().removeClass("_disclose");
         parent.addClass("_disclose").append($(reqService).css("display", "grid"));

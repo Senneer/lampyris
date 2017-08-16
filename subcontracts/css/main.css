@@ -2680,7 +2680,6 @@ main {
 .req__listItem._disclose {
   margin: 0 -50px;
   padding: 0 50px;
-  background: #f6f6f6;
 }
 
 .req__listItemInfo {
@@ -2765,34 +2764,55 @@ main {
       transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.req__listItemService {
+.req__listItemServiceInfo {
   display: none;
+}
+.req__listItemServiceInfo > div {
+  margin: 0 -50px;
+  padding: 0 50px 20px;
+  background: #f3fbfe;
+  background: linear-gradient(to bottom, #f3fbfe 0, #ffffff 30px);
+}
+
+.req__listItemServiceName {
+  margin: 15px 0;
+  font: 700 24px/1.2 'Lato';
+}
+
+.req__listItemService {
+  display: -ms-grid;
+  display:     grid;
   -ms-grid-columns: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 50px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.req__listItemService > li {
-  padding-bottom: 25px;
+.req__listItemService > li > a {
+  display: block;
+  text-decoration: none;
+  color: var(--accidental-tc);
 }
 .req__listItemService > li p._name {
   margin: 0 0 5px;
   font-size: 16px;
   font-weight: 500;
-  text-decoration: underline;
 }
 .req__listItemService > li ul {
+  box-sizing: border-box;
   margin: 0;
-  padding: 0;
+  padding: 20px 15px;
   list-style: none;
+  background: #f3fcff url(../img/edit.png) no-repeat 97% 10%;
+  border: 2px solid #e8f7fe;
+  border-radius: 4px;
 }
 .req__listItemService > li li span {
-  font: 100 16px/1.2 'Lato';
+  font: 400 14px/1.2 'Lato';
 }
 .req__listItemService > li li span._data {
-  margin-left: 10px;
-  font-weight: 400;
+  margin-left: 5px;
 }
 
 .orders {

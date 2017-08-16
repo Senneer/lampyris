@@ -2767,7 +2767,6 @@ main {
     &._disclose {
       margin: 0 -50px;
       padding: 0 50px;
-      background: #f6f6f6;
     }
   }
   &__listItemInfo {
@@ -2843,32 +2842,52 @@ main {
       }
     }
   }
+  &__listItemServiceInfo {
+    display: none;
+
+    & > div {
+      margin: 0 -50px;
+      padding: 0 50px 20px;
+      background: #f3fbfe;
+      background: linear-gradient(to bottom, #f3fbfe 0, #ffffff 30px);
+    }
+  }
+  &__listItemServiceName {
+    margin: 15px 0;
+    font: 700 24px/1.2 "Lato";
+  }
   &__listItemService {
-    display: none; //grid
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 50px;
     margin: 0;
     padding: 0;
     list-style: none;
     & > li {
-      padding-bottom: 25px;
+      & > a {
+        display: block;
+        text-decoration: none;
+        color: var(--accidental-tc);
+      }
       & p._name {
         margin: 0 0 5px;
         font-size: 16px;
         font-weight: 500;
-        text-decoration: underline;
       }
       & ul {
+        box-sizing: border-box;
         margin: 0;
-        padding: 0;
+        padding: 20px 15px;
         list-style: none;
+        background: #f3fcff url(../img/edit.png) no-repeat 97% 10%;
+        border: 2px solid #e8f7fe;
+        border-radius: 4px;
       }
       & li {
-
         & span {
-          font: 100 16px/1.2 "Lato";
+          font: 400 14px/1.2 "Lato";
           &._data {
-            margin-left: 10px;
-            font-weight: 400;
+            margin-left: 5px;
           }
         }
       }
