@@ -142,6 +142,7 @@ main {
   position: relative;
   padding-top: 50px;
   overflow: hidden;
+  transition: background .2s ease-in-out;
 
   &._wide {
     grid-column: 2/span 2;
@@ -214,7 +215,6 @@ main {
   }
 
   &__infoTitle {
-    display: table;
     max-width: 80%;
     margin: 0 auto;
     font-size: 1vw;
@@ -225,6 +225,10 @@ main {
     letter-spacing: .024em;
     color: currentColor;
     cursor: pointer;
+
+    ._open & {
+      text-align: left;
+    }
 
     .category._list &::after {
       content: "";
@@ -1619,10 +1623,10 @@ main {
 
 .history {
   position: relative;
+  padding-top: 120px;
 
   &__title {
-    position: absolute;
-    top: 120px;
+    position: relative;
     width: 100%;
     margin: 0;
     text-align: center;
@@ -1630,10 +1634,9 @@ main {
   }
 
   &__subtitle {
-    position: absolute;
-    top: 250px;
+    position: relative;
     width: 100%;
-    margin: 0;
+    margin: 30px 0 0;
     font-size: 1vw;
     text-align: center;
     z-index: 2;
@@ -1646,7 +1649,7 @@ main {
 
     & .slick-arrow {
       position: absolute;
-      top: 550px;
+      top: 150px;
       font: 400 16px/1 $accidental-ff;
       color: #b1b4b4;
       background: none;
@@ -1667,14 +1670,14 @@ main {
       }
 
       &.slick-prev {
-        left: 66%;
+        left: 69%;
         &::before {
           transform: translateX(-50%) rotate(180deg);
           background: #e54b4b url(../img/arrow-thin-white.png) no-repeat 50% 50%;
         }
       }
       &.slick-next {
-        left: 73%;
+        left: 76%;
         &::before {
           background: #e54b4b url(../img/arrow-thin-white.png) no-repeat 50% 50%;
         }
@@ -1742,20 +1745,44 @@ main {
     }
   }
 
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    & .slick-list,
+    & .slick-track {
+      width: 100%;
+      height: 100%;
+    }
+    & li {
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+      height: 100%;
+      &:nth-child(odd) {
+        background: linear-gradient(-70deg, #d7dbdb 0, #d7dbdb 30%, #ffffff 30%, #ffffff 100%);
+      }
+      &:nth-child(even) {
+        background: linear-gradient(-70deg, #ffffff 0, #ffffff 30%, #d7dbdb 30%, #d7dbdb 100%);
+      }
+    }
+  }
+
   &__sliderItem {
-    padding: 340px 0 75px 140px;
+    padding: 50px 0 75px 140px;
     outline: none;
 
     &:nth-child(odd) {
-      background: linear-gradient(-70deg, #d7dbdb 0, #d7dbdb 30%, #ffffff 30%, #ffffff 100%);
-
       & .history__sliderItemInfo .text {
         background: #d7dbdb;
       }
     }
     &:nth-child(even) {
-      background: linear-gradient(-70deg, #ffffff 0, #ffffff 30%, #d7dbdb 30%, #d7dbdb 100%);
-
       & .history__sliderItemInfo .text {
         background: #ffffff;
       }
@@ -3337,7 +3364,7 @@ main {
   .history {
     &__slider {
       & .slick-arrow {
-        top: 290px;
+        top: 0;
         &.slick-prev {
           left: 73%;
         }
