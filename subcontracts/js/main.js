@@ -132,19 +132,19 @@ $(document).ready(function () {
         fade: true,
         cssEase: "ease-in-out",
         nextArrow: '<button type="button" class="slick-next">вперед</button>',
-        prevArrow: '<button type="button" class="slick-prev">назад</button>',
-        asNavFor: sliders[4]
+        prevArrow: '<button type="button" class="slick-prev">назад</button>'
+        // asNavFor: sliders[4]
       });
-      sliders[4].slick({
-        dots: false,
-        arrows: false,
-        infinite: false,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        nextArrow: '<button type="button" class="slick-next">вперед</button>',
-        prevArrow: '<button type="button" class="slick-prev">назад</button>',
-        asNavFor: sliders[3]
-      });
+      // sliders[4].slick({
+      //   dots: false,
+      //   arrows: false,
+      //   infinite: false,
+      //   slidesToShow: 1,
+      //   slidesToScroll: 1,
+      //   nextArrow: '<button type="button" class="slick-next">вперед</button>',
+      //   prevArrow: '<button type="button" class="slick-prev">назад</button>',
+      //   asNavFor: sliders[3]
+      // });
     });
 
     $(".about__totop").on("click", function (e) {
