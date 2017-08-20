@@ -74,7 +74,7 @@ $(document).ready(function () {
       elem.attachEvent("onmousewheel", onWheel);
     }
 
-    var sliders = [$(".prod__sliderImg ul"), $(".prod__sliderText"), $(".team__dmPeople"), $(".history__slider"), $(".history__bg")];
+    var sliders = [$(".prod__sliderImg ul"), $(".prod__sliderText"), $(".team__dmPeople")];
 
     function onWheel(e) {
       e = e || window.event;
@@ -126,27 +126,6 @@ $(document).ready(function () {
         slidesToShow: 4,
         slidesToScroll: 1
       });
-      sliders[3].slick({
-        dots: true,
-        infinite: false,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        fade: true,
-        cssEase: "ease-in-out",
-        nextArrow: '<button type="button" class="slick-next">вперед</button>',
-        prevArrow: '<button type="button" class="slick-prev">назад</button>'
-        // asNavFor: sliders[4]
-      });
-      // sliders[4].slick({
-      //   dots: false,
-      //   arrows: false,
-      //   infinite: false,
-      //   slidesToShow: 1,
-      //   slidesToScroll: 1,
-      //   nextArrow: '<button type="button" class="slick-next">вперед</button>',
-      //   prevArrow: '<button type="button" class="slick-prev">назад</button>',
-      //   asNavFor: sliders[3]
-      // });
     });
 
     $(".about__totop").on("click", function (e) {
