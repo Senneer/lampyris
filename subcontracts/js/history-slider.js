@@ -23,15 +23,10 @@ jQuery(document).ready(function () {
     //store path 'd' attribute values 
     var pathArray = [];
     pathArray[0] = svgCoverLayer.data('step1');
-    pathArray[1] = svgCoverLayer.data('step6');
-    pathArray[2] = svgCoverLayer.data('step2');
-    pathArray[3] = svgCoverLayer.data('step7');
-    pathArray[4] = svgCoverLayer.data('step3');
-    pathArray[5] = svgCoverLayer.data('step8');
-    pathArray[6] = svgCoverLayer.data('step4');
-    pathArray[7] = svgCoverLayer.data('step9');
-    pathArray[8] = svgCoverLayer.data('step5');
-    pathArray[9] = svgCoverLayer.data('step10');
+    pathArray[1] = svgCoverLayer.data('step2');
+    pathArray[2] = svgCoverLayer.data('step3');
+    pathArray[3] = svgCoverLayer.data('step4');
+    pathArray[4] = svgCoverLayer.data('step5');
 
     //update visible slide when user clicks .cd-slider-navigation buttons
     sliderNavigation.on('click', function (event) {
@@ -39,51 +34,83 @@ jQuery(document).ready(function () {
       var selectedItem = $(this);
       if (!selectedItem.hasClass('_selected')) {
         // if it's not already selected
+        var parity = retrieveParity(slider);
         var selectedSlidePosition = selectedItem.index(),
             selectedSlide = slider.children('li').eq(selectedSlidePosition),
-            visibleSlide = retrieveVisibleSlide(slider),
+            visibleSlide = retrieveVisibleSlide(slider, parity),
             visibleSlidePosition = visibleSlide.index(),
             direction = '';
         direction = visibleSlidePosition < selectedSlidePosition ? 'next' : 'prev';
-        updateSlide(visibleSlide, selectedSlide, direction, svgCoverLayer, sliderNavigation, pathArray, svgPath);
+        updateSlide(visibleSlide, selectedSlide, direction, svgCoverLayer, sliderNavigation, pathArray, svgPath, parity);
       }
     });
+  }
+
+  function retrieveParity(slider) {
+    if (slider.find('li').index($('._visible')) % 2 === 0) {
+      return 'even';
+    } else {
+      return 'odd';
+    }
   }
 
   function retrieveVisibleSlide(slider) {
     return slider.find('._visible');
   }
-  function updateSlide(oldSlide, newSlide, direction, svgCoverLayer, sliderNavigation, paths, svgPath) {
+  function updateSlide(oldSlide, newSlide, direction, svgCoverLayer, sliderNavigation, paths, svgPath, parity) {
     if (direction == 'next') {
-      var path1 = paths[0],
-          path2 = paths[2],
-          path3 = paths[4],
-          path4 = paths[6],
-          path5 = paths[8];
+      if (parity === 'even') {
+        var path1 = paths[0],
+            path2 = paths[1],
+            path3 = paths[2];
+      } else {
+        var path1 = paths[2],
+            path2 = paths[3],
+            path3 = paths[4],
+            path4 = paths[0];
+      }
     } else {
-      var path1 = paths[1],
-          path2 = paths[3],
-          path3 = paths[5],
-          path4 = paths[7],
-          path5 = paths[9];
+      if (parity === 'odd') {
+        var path1 = paths[2],
+            path2 = paths[1],
+            path3 = paths[0];
+      } else {
+        var path1 = paths[0],
+            path2 = paths[4],
+            path3 = paths[3],
+            path4 = paths[2];
+      }
     }
+    console.log(parity);
 
     svgCoverLayer.addClass('is-animating');
     svgPath.attr('d', path1);
     svgPath.animate({ 'd': path2 }, duration, firstCustomMinaAnimation, function () {
-      svgPath.animate({ 'd': path3 }, duration, secondCustomMinaAnimation, function () {
-        oldSlide.removeClass('_visible');
-        newSlide.addClass('_visible');
-        updateNavSlide(newSlide, sliderNavigation);
-        setTimeout(function () {
-          svgPath.animate({ 'd': path4 }, duration, firstCustomMinaAnimation, function () {
-            svgPath.animate({ 'd': path5 }, duration, secondCustomMinaAnimation, function () {
-              svgCoverLayer.removeClass('is-animating');
-            });
+      oldSlide.removeClass('_visible');
+      newSlide.addClass('_visible');
+      updateNavSlide(newSlide, sliderNavigation);
+      setTimeout(function () {
+        if (parity === 'odd' && direction === 'next') {
+          svgPath.attr('d', path3);
+          svgPath.animate({ 'd': path4 }, duration, secondCustomMinaAnimation, function () {
+            svgCoverLayer.removeClass('is-animating');
           });
-        }, delay);
+        } else if (parity === 'even' && direction === 'next') {
+          svgPath.animate({ 'd': path3 }, duration, secondCustomMinaAnimation, function () {
+            svgCoverLayer.removeClass('is-animating');
+          });
+        } else if (parity === 'odd' && direction === 'prev') {
+          svgPath.animate({ 'd': path3 }, duration, secondCustomMinaAnimation, function () {
+            svgCoverLayer.removeClass('is-animating');
+          });
+        } else if (parity === 'even' && direction === 'prev') {
+          svgPath.attr('d', path3);
+          svgPath.animate({ 'd': path4 }, duration, secondCustomMinaAnimation, function () {
+            svgCoverLayer.removeClass('is-animating');
+          });
+        }
       });
-    });
+    }, delay);
   }
 
   function updateNavSlide(actualSlide, sliderNavigation) {
