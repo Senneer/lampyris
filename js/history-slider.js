@@ -26,6 +26,23 @@ jQuery(document).ready(function(){
     pathArray[3] = svgCoverLayer.data('step4');
     pathArray[4] = svgCoverLayer.data('step5');
 
+    $('.history__arrow._next').on('click', function(e) {
+      e.preventDefault();
+      var nextIndex = $('.history__nav li').index('._selected') +1;
+      var selectedItem = $(sliderNavigation[nextIndex]);
+      if(!selectedItem.hasClass('_selected')) {
+        // if it's not already selected
+        var parity = retrieveParity(slider);
+        var selectedSlidePosition = selectedItem.index(),
+        selectedSlide = slider.children('li').eq(selectedSlidePosition),
+        visibleSlide = retrieveVisibleSlide(slider, parity),
+        visibleSlidePosition = visibleSlide.index(),
+        direction = '';
+        direction = ( visibleSlidePosition < selectedSlidePosition) ? 'next': 'prev';
+        updateSlide(visibleSlide, selectedSlide, direction, svgCoverLayer, sliderNavigation, pathArray, svgPath, parity);
+      }
+    });
+
     //update visible slide when user clicks .cd-slider-navigation buttons
     sliderNavigation.on('click', function(event){
       event.preventDefault();
