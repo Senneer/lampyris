@@ -36,7 +36,14 @@ $(document).ready(function () {
       $(el).find("button").on("click", function(e) {
         e.preventDefault();
         $(".projects__all").css("display", "none");
-        $(".projects").slick('slickGoTo', i, false);
+        $(".projects__detailed").css("display", "block");
+        $(".projects__detailedList").slick({
+          dots: true,
+          arrows: false,
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1
+        });
       });
     });
 

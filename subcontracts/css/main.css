@@ -447,6 +447,101 @@ main {
 .projects__allList button:hover {
   border-color: #ffffff;
 }
+.projects__detailed {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.projects__detailedList {
+  position: relative;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.projects__detailedList .slick-track,
+.projects__detailedList .slick-list {
+  height: 100%;
+}
+.projects__detailedList li {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+.projects__detailedList li img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.projects__detailedList .slick-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.projects__detailedList .slick-dots li:not(:last-child) {
+  margin-right: 7px;
+}
+.projects__detailedList .slick-dots button {
+  display: block;
+  width: 5px;
+  height: 5px;
+  padding: 0;
+  font-size: 0;
+  background: #ffffff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.projects__detailedList .slick-dots li.slick-active button {
+  background: #ffcc00;
+}
+.projects__detailedClose {
+  box-sizing: border-box;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: block;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  color: #ffffff;
+  background: none;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+}
+.projects__detailedClose::after,
+.projects__detailedClose::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 3px;
+  background: currentColor;
+  border-radius: 10px;
+}
+.projects__detailedClose::after {
+  -ms-transform: translate(-50%, -50%) rotate(45deg);
+      transform: translate(-50%, -50%) rotate(45deg);
+}
+.projects__detailedClose::before {
+  -ms-transform: translate(-50%, -50%) rotate(-45deg);
+      transform: translate(-50%, -50%) rotate(-45deg);
+}
 
 .order__slider {
   position: relative;
@@ -1735,6 +1830,7 @@ main {
 .history__arrow {
   position: absolute;
   top: 290px;
+  padding: 0;
   font: 400 16px/1 'Segui', segoe;
   color: #b1b4b4;
   background: none;
@@ -1745,6 +1841,7 @@ main {
 }
 .history__arrow::before {
   content: '';
+  box-sizing: border-box;
   position: absolute;
   bottom: 100%;
   left: 50%;
@@ -1755,7 +1852,7 @@ main {
   border-radius: 50%;
 }
 .history__arrow._prev {
-  left: 69%;
+  left: 76%;
 }
 .history__arrow._prev::before {
   -ms-transform: translateX(-50%) rotate(180deg);
@@ -1763,12 +1860,13 @@ main {
   background: #e54b4b url(../img/arrow-thin-white.png) no-repeat 50% 50%;
 }
 .history__arrow._next {
-  left: 76%;
+  left: 85%;
 }
 .history__arrow._next::before {
   background: #e54b4b url(../img/arrow-thin-white.png) no-repeat 50% 50%;
 }
-.history__arrow.slick-disabled {
+.history__arrow._disable {
+  pointer-events: none;
   cursor: default;
   opacity: .5;
 }

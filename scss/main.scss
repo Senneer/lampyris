@@ -457,6 +457,107 @@ main {
       }
     }
   }
+
+  &__detailed {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__detailedList {
+    position: relative;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    & .slick-track,
+    & .slick-list {
+      height: 100%;
+    }
+
+    & li {
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+      height: 100%;
+      outline: none;
+
+      & img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    & .slick-dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      & li:not(:last-child) {
+        margin-right: 7px;
+      }
+
+      & button {
+        display: block;
+        width: 5px;
+        height: 5px;
+        padding: 0;
+        font-size: 0;
+        background: #ffffff;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      & li.slick-active button {
+        background: #ffcc00;
+      }
+    }
+  }
+
+  &__detailedClose {
+    box-sizing: border-box;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    display: block;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    color: #ffffff;
+    background: none;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 14px;
+      height: 3px;
+      background: currentColor;
+      border-radius: 10px;
+    }
+    &::after {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &::before {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
 }
 
 .order {
@@ -1818,6 +1919,7 @@ main {
   &__arrow {
     position: absolute;
     top: 290px;
+    padding: 0;
     font: 400 16px/1 $accidental-ff;
     color: #b1b4b4;
     background: none;
@@ -1828,6 +1930,7 @@ main {
 
     &::before {
       content: "";
+      box-sizing: border-box;
       position: absolute;
       bottom: 100%;
       left: 50%;
@@ -1838,20 +1941,21 @@ main {
     }
 
     &._prev {
-      left: 69%;
+      left: 76%;
       &::before {
         transform: translateX(-50%) rotate(180deg);
         background: #e54b4b url(../img/arrow-thin-white.png) no-repeat 50% 50%;
       }
     }
     &._next {
-      left: 76%;
+      left: 85%;
       &::before {
         background: #e54b4b url(../img/arrow-thin-white.png) no-repeat 50% 50%;
       }
     }
 
-    &.slick-disabled {
+    &._disable {
+      pointer-events: none;
       cursor: default;
       opacity: .5;
     }

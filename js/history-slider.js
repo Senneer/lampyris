@@ -28,18 +28,34 @@ jQuery(document).ready(function(){
 
     $('.history__arrow._next').on('click', function(e) {
       e.preventDefault();
-      var nextIndex = $('.history__nav li').index('._selected') +1;
+      $('.history__arrow._prev').removeClass('_disable');
+      var nextIndex = $('.history__navItem').index( $('._selected') ) + 1;
       var selectedItem = $(sliderNavigation[nextIndex]);
-      if(!selectedItem.hasClass('_selected')) {
-        // if it's not already selected
-        var parity = retrieveParity(slider);
-        var selectedSlidePosition = selectedItem.index(),
-        selectedSlide = slider.children('li').eq(selectedSlidePosition),
-        visibleSlide = retrieveVisibleSlide(slider, parity),
-        visibleSlidePosition = visibleSlide.index(),
-        direction = '';
-        direction = ( visibleSlidePosition < selectedSlidePosition) ? 'next': 'prev';
-        updateSlide(visibleSlide, selectedSlide, direction, svgCoverLayer, sliderNavigation, pathArray, svgPath, parity);
+      var parity = retrieveParity(slider);
+      var selectedSlidePosition = selectedItem.index(),
+      selectedSlide = slider.children('li').eq(selectedSlidePosition),
+      visibleSlide = retrieveVisibleSlide(slider),
+      direction = 'next';
+      updateSlide(visibleSlide, selectedSlide, direction, svgCoverLayer, sliderNavigation, pathArray, svgPath, parity);
+      console.log(nextIndex, $('.history__navItem').length);
+      if(nextIndex >= $('.history__navItem').length - 1) {
+        $(this).addClass('_disable');
+      }
+    });
+    $('.history__arrow._prev').on('click', function(e) {
+      e.preventDefault();
+      $('.history__arrow._next').removeClass('_disable');
+      var nextIndex = $('.history__navItem').index( $('._selected') ) - 1;
+      var selectedItem = $(sliderNavigation[nextIndex]);
+      var parity = retrieveParity(slider);
+      var selectedSlidePosition = selectedItem.index(),
+      selectedSlide = slider.children('li').eq(selectedSlidePosition),
+      visibleSlide = retrieveVisibleSlide(slider),
+      direction = 'prev';
+      updateSlide(visibleSlide, selectedSlide, direction, svgCoverLayer, sliderNavigation, pathArray, svgPath, parity);
+      console.log(nextIndex, $('.history__navItem').length);
+      if(nextIndex <= 0) {
+        $(this).addClass('_disable');
       }
     });
 
@@ -52,7 +68,7 @@ jQuery(document).ready(function(){
         var parity = retrieveParity(slider);
         var selectedSlidePosition = selectedItem.index(),
         selectedSlide = slider.children('li').eq(selectedSlidePosition),
-        visibleSlide = retrieveVisibleSlide(slider, parity),
+        visibleSlide = retrieveVisibleSlide(slider),
         visibleSlidePosition = visibleSlide.index(),
         direction = '';
         direction = ( visibleSlidePosition < selectedSlidePosition) ? 'next': 'prev';
