@@ -98,11 +98,11 @@
             </ul>
           </div>
           <div class="projects__detailed">
-            <div class="projects__detailedList">
+            <ul class="projects__detailedList">
               <li><img src="./img/project1.jpg" alt=""></li>
               <li><img src="./img/project1.jpg" alt=""></li>
               <li><img src="./img/project1.jpg" alt=""></li>
-            </div>
+            </ul>
             <button class="projects__detailedClose"></button>
           </div>
         </div>
@@ -180,6 +180,41 @@
               <li class="service__listItem"><button><span>4-й материал</span><span class="_check"></span></button></li>
               <li class="service__listItem"><button><span>5-й материал</span><span class="_check"></span></button></li>
             </ul>
+            <div class="service__options">
+              <label class="service__optionsInp">
+                <span>Кол-во плат</span>
+                <input type="text" placeholder="400(шт.)">
+              </label>
+              <div class="service__optionsSize">
+                <span>Габариты (мм.)</span>
+                <div>
+                <label><input type="text" placeholder="Ширина"></label>
+                  <label><input type="text" placeholder="Длина"></label>
+                  <label><input type="text" placeholder="Толщина"></label>
+                </div>
+              </div>
+              <label class="service__optionsCheck">
+                <input type="checkbox" name="" id="">
+                <div class="box"></div>
+                <span>Поставка компонентов россыпью</span>
+              </label>
+              <label class="service__optionsSelect">
+                <span>Тип монтажа</span>
+                <select name="" id="">
+                  <option class="hideme" value="">Выберите тип</option>
+                  <option value="">SMT-Монтаж</option>
+                  <option value="">TNT-Монтаж</option>
+                </select>
+              </label>
+              <label class="service__optionsCount">
+                <span>Кол-во гибов 1 детали</span>
+                <div class="service__optionsCountBlock">
+                  <button class="_minus">-</button>
+                  <input type="text" value="1">
+                  <button class="_plus">+</button>
+                </div>
+              </label>
+            </div>
           </div>
           <div class="service__panel">
             <button class="service__panelCancel">Отменить заказ</button>
@@ -513,6 +548,8 @@
   <script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
   <script src="./js/slick.min.js"></script>
   <script src="./js/snap.svg-min.js"></script>
+  <script src="./js/jcf.js"></script>
+  <script src="./js/jcf.select.js"></script>
   <script src="./js/main.js"></script>
   <script src="./js/history-slider.js"></script>
 </body>

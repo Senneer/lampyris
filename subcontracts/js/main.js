@@ -2,6 +2,14 @@
 
 $(document).ready(function () {
 
+  function initCustomForms() {
+    jcf.setOptions('Select', {
+      wrapNative: false,
+      maxVisibleItems: 8
+    });
+    jcf.replaceAll();
+  }
+
   if ($(".wrapper._main").length) {
     var onWheel = function onWheel(e) {
       e = e || window.event;
@@ -35,6 +43,8 @@ $(document).ready(function () {
         slidesToShow: 4,
         slidesToScroll: 1
       });
+
+      initCustomForms();
     });
 
     $(".projects").slick({
@@ -67,6 +77,11 @@ $(document).ready(function () {
         });
       });
     });
+    $(".projects__detailedClose").on("click", function (e) {
+      e.preventDefault();
+      $(".projects__detailed").hide();
+      $(".projects__detailedList").slick("unslick");
+    });
 
     $(".category._list .category__infoTitle").on("click", function () {
       $(this).parents(".category").toggleClass("_open");
@@ -85,6 +100,28 @@ $(document).ready(function () {
       e.preventDefault();
       service = $(this).text();
       title.html(service);
+    });
+
+    $(".service__optionsCountBlock input").focusout(function () {
+      if ($(this).val() < 1) {
+        $(this).val(1);
+      }
+    });
+    $(".service__optionsCountBlock button._plus").on("click", function (e) {
+      e.preventDefault();
+
+      var i = $(".service__optionsCountBlock input").val();
+      i++;
+      $(".service__optionsCountBlock input").val(i);
+    });
+    $(".service__optionsCountBlock button._minus").on("click", function (e) {
+      e.preventDefault();
+
+      var i = $(".service__optionsCountBlock input").val();
+      i--;
+      if (i > 0) {
+        $(".service__optionsCountBlock input").val(i);
+      }
     });
 
     // for landing
