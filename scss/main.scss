@@ -1012,6 +1012,9 @@ main {
     margin: 0;
     padding: 0;
     list-style: none;
+    &._open {
+      display: block;
+    }
   }
 
   &__listItem {
@@ -1061,6 +1064,9 @@ main {
     margin: 0;
     padding: 0;
     list-style: none;
+    &._open {
+      display: grid;
+    }
 
     & li {
       box-sizing: border-box;
@@ -1079,7 +1085,7 @@ main {
 
       & img {
         display: block;
-        max-height: 100%;
+        width: 100%;
       }
 
       & .service-check {
@@ -1092,13 +1098,16 @@ main {
   }
 
   &__color {
-    display: grid; //grid
+    display: none; //grid
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 100px;
     grid-gap: 7px;
     margin: 0;
     padding: 0;
     list-style: none;
+    &._open {
+      display: grid;
+    }
 
     & li {
       box-sizing: border-box;
@@ -1138,6 +1147,9 @@ main {
     min-height: 100%;
     font-size: 13px;
     color: var(--accidental-tc);
+    &._open {
+      display: flex;
+    }
   }
 
   &__optionsInp {
@@ -1297,6 +1309,7 @@ main {
     display: flex;
     align-items: center;
     margin: 0 10px 10px 0;
+    padding-top: 20px;
     cursor: pointer;
 
     & input {

@@ -29,7 +29,7 @@ jQuery(document).ready(function(){
     $('.history__arrow._next').on('click', function(e) {
       e.preventDefault();
       $('.history__arrow._prev').removeClass('_disable');
-      var nextIndex = $('.history__navItem').index( $('._selected') ) + 1;
+      var nextIndex = $('.history__navItem').index( $('.history__navItem._selected') ) + 1;
       var selectedItem = $(sliderNavigation[nextIndex]);
       var parity = retrieveParity(slider);
       var selectedSlidePosition = selectedItem.index(),
@@ -37,7 +37,6 @@ jQuery(document).ready(function(){
       visibleSlide = retrieveVisibleSlide(slider),
       direction = 'next';
       updateSlide(visibleSlide, selectedSlide, direction, svgCoverLayer, sliderNavigation, pathArray, svgPath, parity);
-      console.log(nextIndex, $('.history__navItem').length);
       if(nextIndex >= $('.history__navItem').length - 1) {
         $(this).addClass('_disable');
       }
@@ -45,7 +44,7 @@ jQuery(document).ready(function(){
     $('.history__arrow._prev').on('click', function(e) {
       e.preventDefault();
       $('.history__arrow._next').removeClass('_disable');
-      var nextIndex = $('.history__navItem').index( $('._selected') ) - 1;
+      var nextIndex = $('.history__navItem').index( $('.history__navItem._selected') ) - 1;
       var selectedItem = $(sliderNavigation[nextIndex]);
       var parity = retrieveParity(slider);
       var selectedSlidePosition = selectedItem.index(),
@@ -53,7 +52,6 @@ jQuery(document).ready(function(){
       visibleSlide = retrieveVisibleSlide(slider),
       direction = 'prev';
       updateSlide(visibleSlide, selectedSlide, direction, svgCoverLayer, sliderNavigation, pathArray, svgPath, parity);
-      console.log(nextIndex, $('.history__navItem').length);
       if(nextIndex <= 0) {
         $(this).addClass('_disable');
       }
@@ -112,7 +110,6 @@ jQuery(document).ready(function(){
         path4 = paths[2];
       }
     }
-    console.log(parity);
 
     svgCoverLayer.addClass('is-animating');
     svgPath.attr('d', path1);

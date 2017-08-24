@@ -138,9 +138,10 @@
               <li class="stages__item _active">
                 <p class="stages__itemName"><span>Услуга 1</span><span class="stages__itemFake"></span></p>
                 <ul class="stages__itemSubstage">
-                  <li class="stages__itemSubstageItem _active"><button><span>Подуслуга 1</span><span class="_fake"></span></button></li>
-                  <li class="stages__itemSubstageItem _active"><button><span>Подуслуга 2</span><span class="_fake"></span></button></li>
-                  <li class="stages__itemSubstageItem"><button><span>Подуслуга 3</span><span class="_fake"></span></button></li>
+                  <li class="stages__itemSubstageItem _active"><button data-service=".service__list"><span>Список</span><span class="_fake"></span></button></li>
+                  <li class="stages__itemSubstageItem _active"><button data-service=".service__shape"><span>Форма</span><span class="_fake"></span></button></li>
+                  <li class="stages__itemSubstageItem _active"><button data-service=".service__color"><span>Цвет</span><span class="_fake"></span></button></li>
+                  <li class="stages__itemSubstageItem"><button data-service=".service__options"><span>Параметры</span><span class="_fake"></span></button></li>
                 </ul>
               </li>
               <li class="stages__item">
@@ -173,14 +174,14 @@
         <div class="order__stage _wide _service">
           <p class="order__stageTitle">Выберите материал</p>
           <div class="service">
-            <ul class="service__list">
+            <ul class="service__list service-block">
               <li class="service__listItem"><button><span>1-й материал</span><span class="_check service-check"></span></button></li>
               <li class="service__listItem"><button><span>2-й материал</span><span class="_check service-check"></span></button></li>
               <li class="service__listItem"><button><span>3-й материал</span><span class="_check service-check"></span></button></li>
               <li class="service__listItem"><button><span>4-й материал</span><span class="_check service-check"></span></button></li>
               <li class="service__listItem"><button><span>5-й материал</span><span class="_check service-check"></span></button></li>
             </ul>
-            <ul class="service__shape">
+            <ul class="service__shape service-block">
               <li class="_selected">
                 <img src="./img/shape1.jpg" alt="">
                 <div class="service-check"></div>
@@ -223,7 +224,7 @@
               </li>
             </ul>
             <!-- В main.js описана функция "addColors", которая берет аттрибут "data-color" и расставляет каждому элементу фон с таким же цветом -->
-            <ul class="service__color">
+            <ul class="service__color service-block _open">
               <li>
                 <div class="color" data-color="#cabe8e">
                   <div class="_check service-check"></div>
@@ -285,7 +286,7 @@
                 <p class="_name">RAL 1010</p>
               </li>
             </ul>
-            <div class="service__options">
+            <div class="service__options service-block">
               <label class="service__optionsInp">
                 <span>Кол-во плат</span>
                 <input type="text" placeholder="400(шт.)">

@@ -96,12 +96,14 @@ $(document).ready(function () {
       SelectService(e, $(this));
     });
 
-    var title = $("._service .order__stageTitle");
-    var service = '';
     $(".stages__itemSubstageItem button").on("click", function (e) {
       e.preventDefault();
-      service = $(this).text();
-      title.html(service);
+      var title = $("._service .order__stageTitle");
+      var serviceName = '';
+      var service = $(this).attr("data-service");
+      serviceName = $(this).text();
+      title.html(serviceName);
+      $(".service-block").removeClass("_open").siblings(service).addClass("_open");
     });
 
     $(".service__optionsCountBlock input").focusout(function() {

@@ -978,6 +978,9 @@ main {
   padding: 0;
   list-style: none;
 }
+.service__list._open {
+  display: block;
+}
 .service__listItem {
   display: block;
   margin: 0 0 5px;
@@ -1021,6 +1024,10 @@ main {
   padding: 0;
   list-style: none;
 }
+.service__shape._open {
+  display: -ms-grid;
+  display:     grid;
+}
 .service__shape li {
   box-sizing: border-box;
   position: relative;
@@ -1041,7 +1048,7 @@ main {
 }
 .service__shape li img {
   display: block;
-  max-height: 100%;
+  width: 100%;
 }
 .service__shape li .service-check {
   position: absolute;
@@ -1050,8 +1057,7 @@ main {
   background: #ffffff;
 }
 .service__color {
-  display: -ms-grid;
-  display:     grid;
+  display: none;
   -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   -ms-grid-rows: 100px;
@@ -1060,6 +1066,10 @@ main {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+.service__color._open {
+  display: -ms-grid;
+  display:     grid;
 }
 .service__color li {
   box-sizing: border-box;
@@ -1100,6 +1110,10 @@ main {
   min-height: 100%;
   font-size: 13px;
   color: var(--accidental-tc);
+}
+.service__options._open {
+  display: -ms-flexbox;
+  display: flex;
 }
 .service__optionsInp {
   -ms-flex: 0 1 110px;
@@ -1260,6 +1274,7 @@ main {
   -ms-flex-align: center;
   align-items: center;
   margin: 0 10px 10px 0;
+  padding-top: 20px;
   cursor: pointer;
 }
 .service__optionsCheck input {
