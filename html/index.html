@@ -66,22 +66,22 @@
         <div class="category _wide">
           <ul class="projects">
             <li class="projects__item">
-              <p class="projects__itemName"><span>Миноборона РФ</span></p>
+              <p class="projects__itemName"><button>Миноборона РФ</button></p>
             </li>
             <li class="projects__item">
-              <p class="projects__itemName"><span>НГУ</span></p>
+              <p class="projects__itemName"><button>НГУ</button></p>
             </li>
             <li class="projects__item">
-              <p class="projects__itemName"><span>СШ ГЭС</span></p>
+              <p class="projects__itemName"><button>СШ ГЭС</button></p>
             </li>
             <li class="projects__item">
-              <p class="projects__itemName"><span>Кернохранилище</span></p>
+              <p class="projects__itemName"><button>Кернохранилище</button></p>
             </li>
             <li class="projects__item">
-              <p class="projects__itemName"><span>БЦ (Москва) паркинг</span></p>
+              <p class="projects__itemName"><button>БЦ (Москва) паркинг</button></p>
             </li>
             <li class="projects__item">
-              <p class="projects__itemName"><span>ММДЦ Москва-Сити</span></p>
+              <p class="projects__itemName"><button>ММДЦ Москва-Сити</button></p>
             </li>
           </ul>
           <button class="projects__showall">Завершенные проекты</button>
@@ -136,7 +136,12 @@
           <div class="stages__block">
             <ul class="stages">
               <li class="stages__item _active">
-                <p class="stages__itemName"><span>Услуга 1</span><span class="stages__itemFake"></span></p>
+                <p class="stages__itemName">
+                  <span>Услуга 1</span>
+                  <button class="_info" data-service=".service__total">Детали</button>
+                  <button class="_del"></button>
+                  <span class="stages__itemFake"></span>
+                </p>
                 <ul class="stages__itemSubstage">
                   <li class="stages__itemSubstageItem _active"><button data-service=".service__list"><span>Список</span><span class="_fake"></span></button></li>
                   <li class="stages__itemSubstageItem _active"><button data-service=".service__shape"><span>Форма</span><span class="_fake"></span></button></li>
@@ -145,7 +150,11 @@
                 </ul>
               </li>
               <li class="stages__item">
-                <p class="stages__itemName"><span>Услуга 2</span><span class="stages__itemFake"></span></p>
+                <p class="stages__itemName">
+                  <span>Услуга 2</span>
+                  <button class="_add">Добавить +</button>
+                  <span class="stages__itemFake"></span>
+                </p>
                 <ul class="stages__itemSubstage">
                   <li class="stages__itemSubstageItem"><button><span>Подуслуга 1</span><span class="_fake"></span></button></li>
                   <li class="stages__itemSubstageItem"><button><span>Подуслуга 2</span><span class="_fake"></span></button></li>
@@ -153,7 +162,11 @@
                 </ul>
               </li>
               <li class="stages__item">
-                <p class="stages__itemName"><span>Услуга 3</span><span class="stages__itemFake"></span></p>
+                <p class="stages__itemName">
+                  <span>Услуга 3</span>
+                  <button class="_add">Добавить +</button>
+                  <span class="stages__itemFake"></span>
+                </p>
                 <ul class="stages__itemSubstage">
                   <li class="stages__itemSubstageItem"><button><span>Подуслуга 1</span><span class="_fake"></span></button></li>
                   <li class="stages__itemSubstageItem"><button><span>Подуслуга 2</span><span class="_fake"></span></button></li>
@@ -161,7 +174,11 @@
                 </ul>
               </li>
               <li class="stages__item">
-                <p class="stages__itemName"><span>Услуга 4</span><span class="stages__itemFake"></span></p>
+                <p class="stages__itemName">
+                  <span>Услуга 4</span>
+                  <button class="_add">Добавить +</button>
+                  <span class="stages__itemFake"></span>
+                </p>
                 <ul class="stages__itemSubstage">
                   <li class="stages__itemSubstageItem"><button><span>Подуслуга 1</span><span class="_fake"></span></button></li>
                   <li class="stages__itemSubstageItem"><button><span>Подуслуга 2</span><span class="_fake"></span></button></li>
@@ -287,14 +304,15 @@
               </li>
             </ul>
             <div class="service__options service-block">
-              <label class="service__optionsInp">
+              <label class="service__optionsInp _error">
                 <span>Кол-во плат</span>
                 <input type="text" placeholder="400(шт.)">
+                <span class="errormsg">Ошибка</span>
               </label>
               <div class="service__optionsSize">
                 <span>Габариты (мм.)</span>
                 <div>
-                <label><input type="text" placeholder="Ширина"></label>
+                  <label><input type="text" placeholder="Ширина"></label>
                   <label><input type="text" placeholder="Длина"></label>
                   <label><input type="text" placeholder="Толщина"></label>
                 </div>
@@ -321,12 +339,22 @@
                 </div>
               </label>
             </div>
+            <div class="service__total service-block">
+              <div class="service__totalHeads">
+                <p class="_name">Услуги:</p>
+                <p class="_info">Параметры:</p>
+              </div>
+              <div class="service__totalItem">
+                <p class="_name">Резка</p>
+                <p class="_info">Нержавеющая сталь, воздушно-плазменная резка, 55х2х10мм., 40 шт., 2 контура.</p>
+              </div>
+            </div>
           </div>
           <div class="service__panel">
             <button class="service__panelCancel">Отменить заказ</button>
             <form action="" class="service__panelForm">
               <div class="service__panelFormFile">
-                <input type="file" name="file" id="file">
+                <input type="file" name="file" id="file" data-multiple-caption="{count} files selected">
                 <label for="file">Прикрепить файл</label>
               </div>
               <div class="service__panelFormControl">

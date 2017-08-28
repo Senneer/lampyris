@@ -11,6 +11,17 @@ $(document).ready(function () {
   }
 
   if ($(".wrapper._main").length) {
+    var showDetailes = function showDetailes(block, slider) {
+      block.css("display", "block");
+      slider.slick({
+        dots: true,
+        arrows: false,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      });
+    };
+
     var SelectService = function SelectService(e, el) {
       e.preventDefault();
       el.siblings().removeClass("_selected");
@@ -21,6 +32,12 @@ $(document).ready(function () {
     var addColors = function addColors(el) {
       var color = el.find(".color").attr("data-color");
       el.find(".color").css("background", color);
+    };
+
+    var OpenService = function OpenService(el, title, dataService, name) {
+      var service = el.attr(dataService);
+      title.html(name);
+      $(".service-block").removeClass("_open").siblings(service).addClass("_open");
     };
 
     var onWheel = function onWheel(e) {
@@ -75,18 +92,18 @@ $(document).ready(function () {
       e.preventDefault();
       $(".projects__all").css("display", "none");
     });
+
+    $.each($(".projects__itemName"), function (i, el) {
+      $(el).find("button").on("click", function (e) {
+        e.preventDefault();
+        showDetailes($(".projects__detailed"), $(".projects__detailedList"));
+      });
+    });
     $.each($(".projects__allList li"), function (i, el) {
       $(el).find("button").on("click", function (e) {
         e.preventDefault();
         $(".projects__all").css("display", "none");
-        $(".projects__detailed").css("display", "block");
-        $(".projects__detailedList").slick({
-          dots: true,
-          arrows: false,
-          infinite: true,
-          slidesToShow: 1,
-          slidesToScroll: 1
-        });
+        showDetailes($(".projects__detailed"), $(".projects__detailedList"));
       });
     });
     $(".projects__detailedClose").on("click", function (e) {
@@ -101,6 +118,27 @@ $(document).ready(function () {
 
     $(window).on("load", function () {
       $(".stages__block, .service, .total").mCustomScrollbar();
+    });
+
+    var inputs = document.querySelectorAll(".service__panelFormFile input");
+    Array.prototype.forEach.call(inputs, function (input) {
+      var label = input.nextElementSibling,
+          labelVal = label.innerHTML;
+
+      input.addEventListener("change", function (e) {
+        var fileName = "";
+        if (this.files && this.files.length > 1) {
+          fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+        } else {
+          fileName = e.target.value.split('\\').pop();
+        }
+
+        if (fileName) {
+          label.innerHTML = fileName;
+        } else {
+          label.innerHTML = labelVal;
+        }
+      });
     });
 
     $(".service__listItem button").on("click", function (e) {
@@ -120,14 +158,13 @@ $(document).ready(function () {
       SelectService(e, $(this));
     });
 
+    $(".stages__itemName button._info").on("click", function (e) {
+      e.preventDefault();
+      OpenService($(this), $("._service .order__stageTitle"), "data-service", "Информация о заказе");
+    });
     $(".stages__itemSubstageItem button").on("click", function (e) {
       e.preventDefault();
-      var title = $("._service .order__stageTitle");
-      var serviceName = '';
-      var service = $(this).attr("data-service");
-      serviceName = $(this).text();
-      title.html(serviceName);
-      $(".service-block").removeClass("_open").siblings(service).addClass("_open");
+      OpenService($(this), $("._service .order__stageTitle"), "data-service", $(this).text());
     });
 
     $(".service__optionsCountBlock input").focusout(function () {

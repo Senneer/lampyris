@@ -144,6 +144,13 @@ jQuery(document).ready(function(){
   function updateNavSlide(actualSlide, sliderNavigation) {
     var position = actualSlide.index();
     sliderNavigation.removeClass('_selected').eq(position).addClass('_selected');
+    if (position === sliderNavigation.length - 1) {
+      $(".history__arrow._next").addClass("_disable");
+    } else if(position === 0) {
+      $(".history__arrow._prev").addClass("_disable");
+    } else {
+      $(".history__arrow").removeClass("_disable");
+    }
   }
 
   function bezier(x1, y1, x2, y2, epsilon){
