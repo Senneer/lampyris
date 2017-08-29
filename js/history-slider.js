@@ -1,22 +1,52 @@
 jQuery(document).ready(function(){
 
   var duration = 300,
-  delay = 250,
+  delay = 100,
   epsilon = (1000 / 60 / duration) / 4,
   firstCustomMinaAnimation = bezier(.42,.03,.77,.63, epsilon),
   secondCustomMinaAnimation = bezier(.27,.5,.6,.99, epsilon);
 
-  $('.history').each(function(){
-    initSlider($(this));
-  });
+
+  var sliderWrapper = $(".history");
+  var slider = sliderWrapper.find('.history__slider'),
+  sliderNavigation = sliderWrapper.find('.history__nav').find('li');
+  var svgCoverLayer = sliderWrapper.find('.history__svg-cover'),
+  pathId = svgCoverLayer.find('path').attr('id'),
+  svgPath = Snap('#'+pathId);
+  initSlider(sliderWrapper);
+
+  function NextBtn(e, btn, pathArray) {
+    e.preventDefault();
+    $('.history__arrow._prev').removeClass('_disable');
+    var nextIndex = $('.history__navItem').index( $('.history__navItem._selected') ) + 1;
+    var selectedItem = $(sliderNavigation[nextIndex]);
+    var parity = retrieveParity(slider);
+    var selectedSlidePosition = selectedItem.index(),
+    selectedSlide = slider.children('li').eq(selectedSlidePosition),
+    visibleSlide = retrieveVisibleSlide(slider),
+    direction = 'next';
+    updateSlide(visibleSlide, selectedSlide, direction, svgCoverLayer, sliderNavigation, pathArray, svgPath, parity);
+    if(nextIndex >= $('.history__navItem').length - 1) {
+      btn.addClass('_disable');
+    }
+  }
+  function PrevBtn(e, btn, pathArray) {
+    e.preventDefault();
+    $('.history__arrow._next').removeClass('_disable');
+    var nextIndex = $('.history__navItem').index( $('.history__navItem._selected') ) - 1;
+    var selectedItem = $(sliderNavigation[nextIndex]);
+    var parity = retrieveParity(slider);
+    var selectedSlidePosition = selectedItem.index(),
+    selectedSlide = slider.children('li').eq(selectedSlidePosition),
+    visibleSlide = retrieveVisibleSlide(slider),
+    direction = 'prev';
+    updateSlide(visibleSlide, selectedSlide, direction, svgCoverLayer, sliderNavigation, pathArray, svgPath, parity);
+    if(nextIndex <= 0) {
+      btn.addClass('_disable');
+    }
+  }
 
   function initSlider(sliderWrapper) {
-    //cache jQuery objects
-    var slider = sliderWrapper.find('.history__slider'),
-    sliderNavigation = sliderWrapper.find('.history__nav').find('li'),
-    svgCoverLayer = sliderWrapper.find('.history__svg-cover'),
-    pathId = svgCoverLayer.find('path').attr('id'),
-    svgPath = Snap('#'+pathId);
 
     //store path 'd' attribute values 
     var pathArray = [];
@@ -27,34 +57,10 @@ jQuery(document).ready(function(){
     pathArray[4] = svgCoverLayer.data('step5');
 
     $('.history__arrow._next').on('click', function(e) {
-      e.preventDefault();
-      $('.history__arrow._prev').removeClass('_disable');
-      var nextIndex = $('.history__navItem').index( $('.history__navItem._selected') ) + 1;
-      var selectedItem = $(sliderNavigation[nextIndex]);
-      var parity = retrieveParity(slider);
-      var selectedSlidePosition = selectedItem.index(),
-      selectedSlide = slider.children('li').eq(selectedSlidePosition),
-      visibleSlide = retrieveVisibleSlide(slider),
-      direction = 'next';
-      updateSlide(visibleSlide, selectedSlide, direction, svgCoverLayer, sliderNavigation, pathArray, svgPath, parity);
-      if(nextIndex >= $('.history__navItem').length - 1) {
-        $(this).addClass('_disable');
-      }
+      NextBtn(e, $(this), pathArray);
     });
     $('.history__arrow._prev').on('click', function(e) {
-      e.preventDefault();
-      $('.history__arrow._next').removeClass('_disable');
-      var nextIndex = $('.history__navItem').index( $('.history__navItem._selected') ) - 1;
-      var selectedItem = $(sliderNavigation[nextIndex]);
-      var parity = retrieveParity(slider);
-      var selectedSlidePosition = selectedItem.index(),
-      selectedSlide = slider.children('li').eq(selectedSlidePosition),
-      visibleSlide = retrieveVisibleSlide(slider),
-      direction = 'prev';
-      updateSlide(visibleSlide, selectedSlide, direction, svgCoverLayer, sliderNavigation, pathArray, svgPath, parity);
-      if(nextIndex <= 0) {
-        $(this).addClass('_disable');
-      }
+      PrevBtn(e, $(this), pathArray);
     });
 
     //update visible slide when user clicks .cd-slider-navigation buttons
@@ -111,6 +117,9 @@ jQuery(document).ready(function(){
       }
     }
 
+    $('.history__arrow._next').off("click");
+    $('.history__arrow._prev').off("click");
+
     svgCoverLayer.addClass('is-animating');
     svgPath.attr('d', path1);
     svgPath.animate({'d': path2}, duration, firstCustomMinaAnimation, function(){
@@ -138,6 +147,12 @@ jQuery(document).ready(function(){
           });
         }
       });
+      $('.history__arrow._next').on('click', function(e) {
+        NextBtn(e, $(this), paths);
+      });
+      $('.history__arrow._prev').on('click', function(e) {
+        PrevBtn(e, $(this), paths);
+      });
     }, delay);
   }
 
@@ -146,8 +161,10 @@ jQuery(document).ready(function(){
     sliderNavigation.removeClass('_selected').eq(position).addClass('_selected');
     if (position === sliderNavigation.length - 1) {
       $(".history__arrow._next").addClass("_disable");
+      $(".history__arrow._prev").removeClass("_disable");
     } else if(position === 0) {
       $(".history__arrow._prev").addClass("_disable");
+      $(".history__arrow._next").removeClass("_disable");
     } else {
       $(".history__arrow").removeClass("_disable");
     }

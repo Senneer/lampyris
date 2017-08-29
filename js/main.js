@@ -14,6 +14,7 @@ $(document).ready(function () {
       e.preventDefault();
       $(".section._home").css("display", "none");
       $(".section._order").css("display", "grid");
+      $(".footer__about").html("Парк станков").attr("data-page", ".machines");
 
       $(".order__slider").slick({
         dots: false,
@@ -81,7 +82,7 @@ $(document).ready(function () {
     var inputs = document.querySelectorAll(".service__panelFormFile input");
     Array.prototype.forEach.call(inputs, function (input) {
       var label = input.nextElementSibling,
-        labelVal = label.innerHTML;
+      labelVal = label.innerHTML;
 
       input.addEventListener("change", function (e) {
         var fileName = "";
@@ -184,9 +185,9 @@ $(document).ready(function () {
       if ($(window).scrollTop() === 0 && delta < 0) {
         $(".wrapper").css("display", "flex");
         $(".html, body").animate({ scrollTop: $(".land").offset().top }, 0)
-          .animate({ scrollTop: 0 }, 700, "swing", function () {
-            $(".land").css("display", "none");
-          });
+        .animate({ scrollTop: 0 }, 700, "swing", function () {
+          $(".land").css("display", "none");
+        });
         $.each(sliders, function (i) {
           sliders[i].slick("unslick");
         });
@@ -195,44 +196,51 @@ $(document).ready(function () {
 
     function changeLayout(showEl, display, hideEl, scrollEl) {
       showEl.css("display", display);
-      $(".html, body").animate({ scrollTop: scrollEl.offset().top }, 700, "swing", function () {
+      $("body").animate({ scrollTop: scrollEl.offset().top }, 700, "swing", function () {
         hideEl.css("display", "none");
       });
     }
 
     $(".footer__about").on("click", function (e) {
       e.preventDefault();
-      changeLayout($(".land"), "block", $(".wrapper"), $(".land"));
+      changeLayout( $($(this).attr("data-page")), "block", $(".wrapper"), $($(this).attr("data-page")) );
 
-      sliders[0].slick({
-        dots: true,
-        dotsClass: "prod__sliderImgDots",
-        infinite: true,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        nextArrow: $(".prod__sliderImgNext"),
-        asNavFor: ".prod__sliderText"
-      });
-      sliders[1].slick({
-        dots: false,
-        arrows: false,
-        draggable: false,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        asNavFor: ".prod__sliderImg ul"
-      });
-      sliders[2].slick({
-        dots: false,
-        infinite: true,
-        slidesToShow: 4,
-        slidesToScroll: 1
-      });
+      if ( $(this).attr("data-page") === ".land" ) {
+        sliders[0].slick({
+          dots: true,
+          dotsClass: "prod__sliderImgDots",
+          infinite: true,
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          nextArrow: $(".prod__sliderImgNext"),
+          asNavFor: ".prod__sliderText"
+        });
+        sliders[1].slick({
+          dots: false,
+          arrows: false,
+          draggable: false,
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          asNavFor: ".prod__sliderImg ul"
+        });
+        sliders[2].slick({
+          dots: false,
+          infinite: true,
+          slidesToShow: 4,
+          slidesToScroll: 1
+        });
+      }
+    });
+
+    $(".machines__close").on("click", function(e) {
+      e.preventDefault();
+      changeLayout($(".wrapper"), "flex", $(".machines"), $("body"));
     });
 
     $(".about__totop").on("click", function (e) {
       e.preventDefault();
-      changeLayout($(".wrapper"), "flex", $(".land"), $(".html, body"));
+      changeLayout($(".wrapper"), "flex", $(".land"), $("body"));
       $.each(sliders, function (i) {
         sliders[i].slick("unslick");
       });
@@ -321,10 +329,10 @@ $(document).ready(function () {
 
     function addLine() {
       $magicLine
-        .width($(".profile__cntrlsTabs li button._current").width())
-        .css("left", $(".profile__cntrlsTabs li button._current").position().left)
-        .data("origLeft", $magicLine.position().left)
-        .data("origWidth", $magicLine.width());
+      .width($(".profile__cntrlsTabs li button._current").width())
+      .css("left", $(".profile__cntrlsTabs li button._current").position().left)
+      .data("origLeft", $magicLine.position().left)
+      .data("origWidth", $magicLine.width());
     }
     addLine();
 

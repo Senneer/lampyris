@@ -56,7 +56,7 @@ $(document).ready(function () {
 
     var changeLayout = function changeLayout(showEl, display, hideEl, scrollEl) {
       showEl.css("display", display);
-      $(".html, body").animate({ scrollTop: scrollEl.offset().top }, 700, "swing", function () {
+      $("body").animate({ scrollTop: scrollEl.offset().top }, 700, "swing", function () {
         hideEl.css("display", "none");
       });
     };
@@ -65,6 +65,7 @@ $(document).ready(function () {
       e.preventDefault();
       $(".section._home").css("display", "none");
       $(".section._order").css("display", "grid");
+      $(".footer__about").html("Парк станков").attr("data-page", ".machines");
 
       $(".order__slider").slick({
         dots: false,
@@ -207,37 +208,44 @@ $(document).ready(function () {
 
     $(".footer__about").on("click", function (e) {
       e.preventDefault();
-      changeLayout($(".land"), "block", $(".wrapper"), $(".land"));
+      changeLayout($($(this).attr("data-page")), "block", $(".wrapper"), $($(this).attr("data-page")));
 
-      sliders[0].slick({
-        dots: true,
-        dotsClass: "prod__sliderImgDots",
-        infinite: true,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        nextArrow: $(".prod__sliderImgNext"),
-        asNavFor: ".prod__sliderText"
-      });
-      sliders[1].slick({
-        dots: false,
-        arrows: false,
-        draggable: false,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        asNavFor: ".prod__sliderImg ul"
-      });
-      sliders[2].slick({
-        dots: false,
-        infinite: true,
-        slidesToShow: 4,
-        slidesToScroll: 1
-      });
+      if ($(this).attr("data-page") === ".land") {
+        sliders[0].slick({
+          dots: true,
+          dotsClass: "prod__sliderImgDots",
+          infinite: true,
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          nextArrow: $(".prod__sliderImgNext"),
+          asNavFor: ".prod__sliderText"
+        });
+        sliders[1].slick({
+          dots: false,
+          arrows: false,
+          draggable: false,
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          asNavFor: ".prod__sliderImg ul"
+        });
+        sliders[2].slick({
+          dots: false,
+          infinite: true,
+          slidesToShow: 4,
+          slidesToScroll: 1
+        });
+      }
+    });
+
+    $(".machines__close").on("click", function (e) {
+      e.preventDefault();
+      changeLayout($(".wrapper"), "flex", $(".machines"), $("body"));
     });
 
     $(".about__totop").on("click", function (e) {
       e.preventDefault();
-      changeLayout($(".wrapper"), "flex", $(".land"), $(".html, body"));
+      changeLayout($(".wrapper"), "flex", $(".land"), $("body"));
       $.each(sliders, function (i) {
         sliders[i].slick("unslick");
       });
