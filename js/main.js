@@ -10,6 +10,17 @@ $(document).ready(function () {
 
   if ($(".wrapper._main").length) {
 
+    $(".footer__feedbackCall").on("click", function(e) {
+      e.preventDefault();
+      $(".overlay").addClass("_open");
+    });
+    $(".overlay").on("click", function() {
+      $(this).removeClass("_open");
+    });
+    $(".modal").on("click", function(e) {
+      e.stopPropagation();
+    });
+
     $(".category__infoListItem a").on("click", function (e) {
       e.preventDefault();
       $(".section._home").css("display", "none");
@@ -80,6 +91,7 @@ $(document).ready(function () {
     });
 
     var inputs = document.querySelectorAll(".service__panelFormFile input");
+    var delFile = document.querySelectorAll(".service__panelFormFile button._del")[0];
     Array.prototype.forEach.call(inputs, function (input) {
       var label = input.nextElementSibling,
       labelVal = label.innerHTML;
@@ -94,9 +106,20 @@ $(document).ready(function () {
 
         if (fileName) {
           label.innerHTML = fileName;
+          label.classList.add("_attached");
+          delFile.style.display = "block";
         } else {
           label.innerHTML = labelVal;
+          label.classList.remove("_attached");
+          delFile.style.display = "none";
         }
+      });
+
+      delFile.addEventListener("click", function(e) {
+        e.preventDefault();
+        delFile.style.display = "none";
+        label.classList.remove("_attached");
+        label.innerHTML = labelVal;
       });
     });
 

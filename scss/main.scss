@@ -968,6 +968,24 @@ main {
         height: 14px;
         background: url(../img/file.png) no-repeat 50% 50%/contain;
       }
+      &._attached::before {
+        display: none;
+      }
+    }
+
+    & ._del {
+      position: absolute;
+      top: 50%;
+      left: -15px;
+      transform: translateY(-50%);
+      display: none;
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      background: url(../img/delete.png) no-repeat 50% 50%/contain;
+      border: none;
+      cursor: pointer;
+      outline: none;
     }
   }
 
@@ -1207,7 +1225,7 @@ main {
 
   &__optionsInp {
     flex: 0 1 110px;
-    margin: 0 10px 10px 0;
+    margin: 0 10px 13px 0;
 
     & > span {
       display: block;
@@ -1260,18 +1278,17 @@ main {
 
       & .errormsg {
         position: absolute;
-        top: 100%;
+        top: calc(100% + 2px);
         left: 0;
         display: block;
-        font-size: 10px;
-        font-style: italic;
+        font: italic 10px/1 "Lato";
         letter-spacing: .025em;
         color: #ff0000;
       }
     }
   }
   &__optionsSize {
-    margin: 0 10px 10px 0;
+    margin: 0 10px 13px 0;
     & > span {
       display: block;
       font-weight: 600;
@@ -1333,7 +1350,7 @@ main {
     }
   }
   &__optionsCount {
-    margin: 0 10px 10px 0;
+    margin: 0 10px 13px 0;
     & > span {
       display: block;
       font-weight: 600;
@@ -1383,7 +1400,7 @@ main {
     flex: 0 1 200px;
     display: flex;
     align-items: center;
-    margin: 0 10px 10px 0;
+    margin: 0 10px 13px 0;
     padding-top: 20px;
     cursor: pointer;
 
@@ -1429,7 +1446,7 @@ main {
 
   &__optionsSelect {
     flex: 0 1 110px;
-    margin: 0 10px 10px 0;
+    margin: 0 10px 13px 0;
 
     & > span {
       display: block;
@@ -1764,21 +1781,16 @@ main {
   }
 
   &__subtitle {
-    margin: 40px 0;
+    margin: 40px 0 20px;
     font-size: 2.5vw;
     text-align: center;
     line-height: 1.5;
     letter-spacing: .05em;
   }
 
-  &__doc {
-    display: block;
-    margin: 0 auto;
-  }
-
   &__btns {
     display: table;
-    margin: 40px auto 0;
+    margin: 0 auto;
     font-size: 0;
   }
 
@@ -3920,6 +3932,105 @@ main {
     }
     &::before {
       transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: fade-out(#000000, .7);
+  z-index: 10;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+  pointer-events: none;
+  &._open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+.modal {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 480px;
+  padding: 45px 35px 90px;
+  border-radius: 8px;
+  background: #ffffff;
+
+  &__title {
+    margin: 0;
+    font-size: 22px;
+    text-align: center;
+    color: #393d3f;
+  }
+  &__form {
+    width: 100%;
+  }
+  &__formEl {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+
+    & label {
+      display: table;
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    &._required label::after {
+      content: "*";
+      color: #f13c3d;
+    }
+    & input {
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+      height: 45px;
+      padding: 0 15px;
+      font: 400 14px/45px $accidental-ff;
+      background: #eeeeee;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      &::-webkit-input-placeholder {
+        color: #3b3d40;
+      }
+      &::-moz-placeholder {
+        color: #3b3d40;
+      }
+      &:-ms-input-placeholder {
+        color: #3b3d40;
+      }
+      &:-moz-placeholder {
+        color: #3b3d40;
+      }
+    }
+  }
+  & button {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    max-width: 380px;
+    height: 55px;
+    margin: 50px auto 0;
+    padding: 0 20px;
+    font: 500 18px $accidental-ff;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: #ffffff;
+    background: #2a77ed;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    outline: none;
+    &:hover {
+      opacity: .8;
     }
   }
 }

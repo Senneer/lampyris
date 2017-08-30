@@ -356,6 +356,7 @@
               <div class="service__panelFormFile">
                 <input type="file" name="file" id="file" data-multiple-caption="{count} files selected">
                 <label for="file">Прикрепить файл</label>
+                <button class="_del"></button>
               </div>
               <div class="service__panelFormControl">
                 <button class="_back">Назад</button>
@@ -404,7 +405,6 @@
     <section class="greet">
       <p class="greet__title">Завод Лампирис</p>
       <p class="greet__subtitle">Субконтрактное производство.<br>Производство светового оборудования</p>
-      <img src="./img/doc.png" alt="" class="greet__doc">
       <ul class="greet__btns">
         <li class="greet__btnsItem"><a href="">Каталог</a></li>
         <li class="greet__btnsItem"><a href="">Презентация</a></li>
@@ -697,6 +697,26 @@
       </li>
     </ul>
     <button class="machines__close"></button>
+  </div>
+  <div class="overlay">
+    <div class="modal callback">
+      <p class="modal__title">Обратный звонок</p>
+      <form action="" class="modal__form">
+        <div class="modal__formEl">
+          <label for="callback-name">Ваше имя</label>
+          <input type="text" name="name" id="callback-name" placeholder="Антон">
+        </div>
+        <div class="modal__formEl _required">
+          <label for="callback-phone">Ваш телефон</label>
+          <input type="tel" name="phone" id="callback-phone" placeholder="+7 (___) ___-__-__">
+        </div>
+        <div class="modal__formEl">
+          <label for="callback-company">Компания</label>
+          <input type="text" name="company" id="callback-company">
+        </div>
+        <button>Перезвонить</button>
+      </form>
+    </div>
   </div>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>

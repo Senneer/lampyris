@@ -945,6 +945,24 @@ main {
   height: 14px;
   background: url(../img/file.png) no-repeat 50% 50%/contain;
 }
+.service__panelFormFile label._attached::before {
+  display: none;
+}
+.service__panelFormFile ._del {
+  position: absolute;
+  top: 50%;
+  left: -15px;
+  -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+  display: none;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  background: url(../img/delete.png) no-repeat 50% 50%/contain;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
 
 .service__panelFormControl {
   display: -ms-flexbox;
@@ -1178,7 +1196,7 @@ main {
 .service__optionsInp {
   -ms-flex: 0 1 110px;
       flex: 0 1 110px;
-  margin: 0 10px 10px 0;
+  margin: 0 10px 13px 0;
 }
 .service__optionsInp > span {
   display: block;
@@ -1228,16 +1246,15 @@ main {
 }
 .service__optionsInp._error .errormsg {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 2px);
   left: 0;
   display: block;
-  font-size: 10px;
-  font-style: italic;
+  font: italic 10px/1 'Lato';
   letter-spacing: .025em;
   color: #ff0000;
 }
 .service__optionsSize {
-  margin: 0 10px 10px 0;
+  margin: 0 10px 13px 0;
 }
 .service__optionsSize > span {
   display: block;
@@ -1299,7 +1316,7 @@ main {
   color: #a8a8a8;
 }
 .service__optionsCount {
-  margin: 0 10px 10px 0;
+  margin: 0 10px 13px 0;
 }
 .service__optionsCount > span {
   display: block;
@@ -1352,7 +1369,7 @@ main {
   display: flex;
   -ms-flex-align: center;
   align-items: center;
-  margin: 0 10px 10px 0;
+  margin: 0 10px 13px 0;
   padding-top: 20px;
   cursor: pointer;
 }
@@ -1396,7 +1413,7 @@ main {
 .service__optionsSelect {
   -ms-flex: 0 1 110px;
       flex: 0 1 110px;
-  margin: 0 10px 10px 0;
+  margin: 0 10px 13px 0;
 }
 .service__optionsSelect > span {
   display: block;
@@ -1748,19 +1765,15 @@ main {
   letter-spacing: .05em;
 }
 .greet__subtitle {
-  margin: 40px 0;
+  margin: 40px 0 20px;
   font-size: 2.5vw;
   text-align: center;
   line-height: 1.5;
   letter-spacing: .05em;
 }
-.greet__doc {
-  display: block;
-  margin: 0 auto;
-}
 .greet__btns {
   display: table;
-  margin: 40px auto 0;
+  margin: 0 auto;
   font-size: 0;
 }
 .greet__btnsItem {
@@ -3845,6 +3858,107 @@ main {
 .machines__close::before {
   -ms-transform: translate(-50%, -50%) rotate(-45deg);
       transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: rgba(0, 0, 0, .3);
+  z-index: 10;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+  pointer-events: none;
+}
+.overlay._open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 480px;
+  padding: 45px 35px 90px;
+  border-radius: 8px;
+  background: #ffffff;
+}
+.modal__title {
+  margin: 0;
+  font-size: 22px;
+  text-align: center;
+  color: #393d3f;
+}
+.modal__form {
+  width: 100%;
+}
+.modal__formEl {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+}
+.modal__formEl label {
+  display: table;
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.modal__formEl._required label::after {
+  content: '*';
+  color: #f13c3d;
+}
+.modal__formEl input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 45px;
+  padding: 0 15px;
+  font: 400 14px/45px 'Segui', segoe;
+  background: #eeeeee;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+.modal__formEl input::-webkit-input-placeholder {
+  color: #3b3d40;
+}
+.modal__formEl input::-moz-placeholder {
+  color: #3b3d40;
+}
+.modal__formEl input:-ms-input-placeholder {
+  color: #3b3d40;
+}
+.modal__formEl input:-moz-placeholder {
+  color: #3b3d40;
+}
+.modal button {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  height: 55px;
+  margin: 50px auto 0;
+  padding: 0 20px;
+  font: 500 18px 'Segui', segoe;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  color: #ffffff;
+  background: #2a77ed;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  outline: none;
+}
+.modal button:hover {
+  opacity: .8;
 }
 
 @media screen and (min-width: 1800px) {
