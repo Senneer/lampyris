@@ -180,6 +180,15 @@ $(document).ready(function () {
       SelectService(e, $(this));
     });
 
+    $(".stages__item ._add").on("click", function(e) {
+      e.preventDefault();
+      $(this).parents(".stages__item").addClass("_active");
+    });
+    $(".stages__item ._del").on("click", function(e) {
+      e.preventDefault();
+      $(this).parents(".stages__item").removeClass("_active");
+    });
+
     function OpenService(el, title, dataService, name) {
       var service = el.attr(dataService);
       title.html(name);
@@ -191,6 +200,8 @@ $(document).ready(function () {
     });
     $(".stages__itemSubstageItem button").on("click", function (e) {
       e.preventDefault();
+      $(this).parent().siblings().removeClass("_current");
+      $(this).parent().addClass("_current");
       OpenService($(this), $("._service .order__stageTitle"), "data-service", $(this).text());
     });
 

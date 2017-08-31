@@ -690,7 +690,11 @@ main {
 
   &__block {
     height: calc(100% - 42px);
+    padding-right: 15px;
     overflow-y: hidden;
+    &.mCustomScrollbar {
+      padding: 0;
+    }
   }
 
   &__item {
@@ -713,6 +717,14 @@ main {
 
     ._active & {
       color: var(--accidental-tc);
+
+      & ._info,
+      & ._del {
+        display: block;
+      }
+      & ._add {
+        display: none;
+      }
     }
 
     & span {
@@ -721,7 +733,7 @@ main {
     }
 
     & ._info {
-      display: block;
+      display: none;
       padding: 0;
       font: 400 10px/1 $accidental-ff;
       text-transform: uppercase;
@@ -736,7 +748,7 @@ main {
       }
     }
     & ._del {
-      display: block;
+      display: none;
       flex: 0 0 23px;
       width: 23px;
       height: 23px;
@@ -861,7 +873,7 @@ main {
       }
     }
 
-    &._active ._fake::after {
+    &._active:not(:last-child) ._fake::after {
       background: var(--accidental-tc);
     }
 
@@ -883,6 +895,10 @@ main {
         background: #f24841;
         border-radius: 50%;
       }
+    }
+
+    &._current button ._fake::before {
+      background: #ffffff;
     }
 
     &._active + & button {
@@ -2503,43 +2519,6 @@ main {
       pointer-events: none;
       cursor: default;
       opacity: .5;
-    }
-  }
-}
-
-.partners {
-  padding: 180px 0;
-
-  &__list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    width: 100%;
-    max-width: 1648px;
-    margin: 0 auto;
-    padding: 0;
-    list-style: none;
-  }
-
-  &__listItem {
-    text-align: center;
-
-    & > div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 190px;
-
-      & img {
-        display: block;
-      }
-    }
-    & p {
-      margin: 30px 0 0;
-      font-size: 15px;
-      text-decoration: underline;
-      line-height: 1.2;
-      letter-spacing: .05em;
-      color: #062032;
     }
   }
 }

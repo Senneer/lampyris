@@ -670,7 +670,11 @@ main {
 }
 .stages__block {
   height: calc(100% - 42px);
+  padding-right: 15px;
   overflow-y: hidden;
+}
+.stages__block.mCustomScrollbar {
+  padding: 0;
 }
 .stages__item {
   margin: 0;
@@ -695,13 +699,20 @@ main {
 ._active .stages__itemName {
   color: var(--accidental-tc);
 }
+._active .stages__itemName ._info,
+._active .stages__itemName ._del {
+  display: block;
+}
+._active .stages__itemName ._add {
+  display: none;
+}
 .stages__itemName span {
   -ms-flex: 1 1 auto;
       flex: 1 1 auto;
   line-height: 1;
 }
 .stages__itemName ._info {
-  display: block;
+  display: none;
   padding: 0;
   font: 400 10px/1 'Segui', segoe;
   text-transform: uppercase;
@@ -716,7 +727,7 @@ main {
   color: black;
 }
 .stages__itemName ._del {
-  display: block;
+  display: none;
   -ms-flex: 0 0 23px;
       flex: 0 0 23px;
   width: 23px;
@@ -841,7 +852,7 @@ main {
   height: 30px;
   background: #ebebeb;
 }
-.stages__itemSubstageItem._active ._fake::after {
+.stages__itemSubstageItem._active:not(:last-child) ._fake::after {
   background: var(--accidental-tc);
 }
 .stages__itemSubstageItem._active button {
@@ -859,6 +870,9 @@ main {
   height: 5px;
   background: #f24841;
   border-radius: 50%;
+}
+.stages__itemSubstageItem._current button ._fake::before {
+  background: #ffffff;
 }
 .stages__itemSubstageItem._active + .stages__itemSubstageItem button {
   color: var(--accidental-tc);
@@ -2422,44 +2436,6 @@ main {
   pointer-events: none;
   cursor: default;
   opacity: .5;
-}
-
-.partners {
-  padding: 180px 0;
-}
-.partners__list {
-  display: -ms-grid;
-  display:     grid;
-  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  width: 100%;
-  max-width: 1648px;
-  margin: 0 auto;
-  padding: 0;
-  list-style: none;
-}
-.partners__listItem {
-  text-align: center;
-}
-.partners__listItem > div {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 190px;
-}
-.partners__listItem > div img {
-  display: block;
-}
-.partners__listItem p {
-  margin: 30px 0 0;
-  font-size: 15px;
-  text-decoration: underline;
-  line-height: 1.2;
-  letter-spacing: .05em;
-  color: #062032;
 }
 
 .map img {
