@@ -90,6 +90,36 @@ $(document).ready(function () {
       $(".stages__block, .service, .total").mCustomScrollbar();
     });
 
+    var shownSumAll = true;
+    function serviceSum(service) {
+      $.each(service, function(i, el) {
+        var count = $(el).attr("data-count");
+        var number = $(el).html().replace(/[\s|\u00A0|&nbsp;]/g, '');
+        var sum = parseInt( number, 10 );
+        var num = 0;
+        if ( shownSumAll === true ) {
+          num = sum / count;
+          $(el).html( num.toLocaleString() + " Р" );
+        } else {
+          num = sum * count;
+          $(el).html( num.toLocaleString() + " Р" );
+        }
+      });
+    }
+
+    $(".total__panelCount button").on("click", function(e) {
+      e.preventDefault();
+      $(this).addClass("_current");
+      serviceSum($(".total__listItem ._cost"));
+      if ($(this).hasClass("_all")) {
+        shownSumAll = true;
+        $(this).siblings("._one").removeClass("_current");
+      } else if ($(this).hasClass("_one")) {
+        shownSumAll = false;
+        $(this).siblings("._all").removeClass("_current");
+      }
+    });
+
     var inputs = document.querySelectorAll(".service__panelFormFile input");
     var delFile = document.querySelectorAll(".service__panelFormFile button._del")[0];
     Array.prototype.forEach.call(inputs, function (input) {

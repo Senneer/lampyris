@@ -1642,6 +1642,7 @@ main {
   font-weight: 400;
   color: #d4caca;
   cursor: default;
+  pointer-events: none;
 }
 .total__panelCount button._all::after {
   content: '/';
