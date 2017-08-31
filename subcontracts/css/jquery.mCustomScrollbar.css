@@ -53,7 +53,7 @@ y-axis
 
 	.mCSB_inside > .mCSB_container{ margin-right: 30px; }
 
-	.mCSB_container.mCS_no_scrollbar_y.mCS_y_hidden{ margin-right: 0; } /* non-visible scrollbar */
+	.mCSB_container.mCS_no_scrollbar_y.mCS_y_hidden{ margin-right: 10px; } /* non-visible scrollbar */
 	
 	.mCS-dir-rtl > .mCSB_inside > .mCSB_container{ /* RTL direction/left-side scrollbar */
 		margin-right: 0;

@@ -93,13 +93,14 @@ $(document).ready(function () {
     var shownSumAll = true;
     function serviceSum(service) {
       $.each(service, function(i, el) {
+        var cost = $(el).attr("data-cost");
         var count = $(el).attr("data-count");
-        var number = $(el).html().replace(/[\s|\u00A0|&nbsp;]/g, '');
-        var sum = parseInt( number, 10 );
+        // var number = $(el).html().replace(/[\s|\u00A0|&nbsp;]/g, '');
+        var sum = parseInt( cost, 10 );
         var num = 0;
         if ( shownSumAll === true ) {
           num = sum / count;
-          $(el).html( num.toLocaleString() + " Р" );
+          $(el).html( parseInt(cost).toLocaleString() + " Р" );
         } else {
           num = sum * count;
           $(el).html( num.toLocaleString() + " Р" );
@@ -180,13 +181,33 @@ $(document).ready(function () {
       SelectService(e, $(this));
     });
 
+    var services = $(".stages__item");
+    var serviceNumb = 0;
+    function checkServiceNumb(el, parent) {
+      serviceNumb = el.parents(parent).index();
+    }
+
     $(".stages__item ._add").on("click", function(e) {
       e.preventDefault();
-      $(this).parents(".stages__item").addClass("_active");
+      var service = $(this).parents(".stages__item");
+      service.addClass("_active");
+      $.each($(service).find(".stages__itemSubstageItem"), function(i, el) {
+        if (i === 0) {
+          $(el).addClass("_current");
+          var title = $(el).find("span:first-child").text();
+          OpenService($(el).find("button"), $("._service .order__stageTitle"), "data-service", title);
+        }
+      });
+      checkServiceNumb($(this), ".stages__item");
     });
     $(".stages__item ._del").on("click", function(e) {
       e.preventDefault();
-      $(this).parents(".stages__item").removeClass("_active");
+      var service = $(this).parents(".stages__item");
+      service.removeClass("_active").find(".stages__itemSubstageItem").removeClass("_active _current");
+    });
+
+    $(".service__panelFormControl ._next").on("click", function(e) {
+      e.preventDefault();
     });
 
     function OpenService(el, title, dataService, name) {
@@ -203,6 +224,7 @@ $(document).ready(function () {
       $(this).parent().siblings().removeClass("_current");
       $(this).parent().addClass("_current");
       OpenService($(this), $("._service .order__stageTitle"), "data-service", $(this).text());
+      checkServiceNumb($(this), ".stages__item");
     });
 
     $(".service__optionsCountBlock input").focusout(function () {
@@ -212,14 +234,12 @@ $(document).ready(function () {
     });
     $(".service__optionsCountBlock button._plus").on("click", function (e) {
       e.preventDefault();
-
       var i = $(".service__optionsCountBlock input").val();
       i++;
       $(".service__optionsCountBlock input").val(i);
     });
     $(".service__optionsCountBlock button._minus").on("click", function (e) {
       e.preventDefault();
-
       var i = $(".service__optionsCountBlock input").val();
       i--;
       if (i > 0) {
@@ -300,6 +320,18 @@ $(document).ready(function () {
     $(".machines__close").on("click", function(e) {
       e.preventDefault();
       changeLayout($(".wrapper"), "flex", $(".machines"), $("body"));
+    });
+
+    $(".team__dmListItem button").on("click", function(e) {
+      e.preventDefault();
+      $(this).parent().siblings().removeClass("_active");
+      $(this).parent().addClass("_active");
+      sliders[2].slick("unslick").slick({
+        dots: false,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1
+      });
     });
 
     $(".about__totop").on("click", function (e) {
@@ -473,6 +505,15 @@ $(document).ready(function () {
 
     $(window).on("load", function () {
       $(".notif__popupList").mCustomScrollbar();
+    });
+
+    $(".req__listItemInfo button._del").on("click", function(e) {
+      e.preventDefault();
+      var row = $(this).parents(".req__listItem");
+      row.fadeOut(200);
+      setTimeout(function() {
+        row.remove();
+      }, 200);
     });
   }
 });
