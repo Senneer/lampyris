@@ -810,6 +810,16 @@ main {
       height: 30px;
       background: currentColor;
     }
+    .stages__item._active &::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 30px;
+      background: currentColor;
+    }
   }
 
   &__itemSubstage {
@@ -838,7 +848,6 @@ main {
       border: none;
       cursor: pointer;
       outline: none;
-      pointer-events: none;
 
       & > span:first-child {
         border-bottom: 1px solid transparent;
@@ -864,7 +873,7 @@ main {
         &::after {
           content: "";
           position: absolute;
-          top: 100%;
+          top: calc(100% + 1px);
           left: 50%;
           transform: translateX(-50%);
           width: 1px;
@@ -874,6 +883,10 @@ main {
       }
     }
 
+    &._disable button {
+      pointer-events: none;
+    }
+
     &._active:not(:last-child) ._fake::after {
       background: var(--accidental-tc);
     }
@@ -881,7 +894,6 @@ main {
     &._active button,
     &._current button {
       color: var(--accidental-tc);
-      pointer-events: auto;
 
       & > span:first-child {
         border-color: #ebebeb;

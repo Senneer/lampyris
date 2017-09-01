@@ -193,7 +193,7 @@ $(document).ready(function () {
       service.addClass("_active");
       $.each($(service).find(".stages__itemSubstageItem"), function(i, el) {
         if (i === 0) {
-          $(el).addClass("_current");
+          $(el).addClass("_current").removeClass("_disable");
           var title = $(el).find("span:first-child").text();
           OpenService($(el).find("button"), $("._service .order__stageTitle"), "data-service", title);
         }
@@ -208,12 +208,27 @@ $(document).ready(function () {
 
     $(".service__panelFormControl ._next").on("click", function(e) {
       e.preventDefault();
+      $(this).addClass("_disable");
+      var nextBtn = $(services[serviceNumb]).find(".stages__itemSubstageItem._current").next();
+      $(services[serviceNumb]).find(".stages__itemSubstageItem._current").addClass("_active").removeClass("_current");
+      nextBtn.addClass("_current").removeClass("_disable");
+      OpenService( $(nextBtn).find("button"),$("._service .order__stageTitle"), "data-service", $(nextBtn).find("button").text() );
+    });
+    $(".service__panelFormControl ._back").on("click", function(e) {
+      e.preventDefault();
+      var prevBtn = $(services[serviceNumb]).find(".stages__itemSubstageItem._current").prev();
+      $(services[serviceNumb]).find(".stages__itemSubstageItem._current").removeClass("_current");
+      prevBtn.addClass("_current");
+      OpenService( $(prevBtn).find("button"),$("._service .order__stageTitle"), "data-service", $(prevBtn).find("button").text() );
     });
 
     function OpenService(el, title, dataService, name) {
       var service = el.attr(dataService);
       title.html(name);
       $(".service-block").removeClass("_open").siblings(service).addClass("_open");
+      if ( $(".service-block._open").find("._selected").length ) {
+        $(".service__panelFormControl").find("._next").removeClass("_disable");
+      }
     }
     $(".stages__itemName button._info").on("click", function(e) {
       e.preventDefault();

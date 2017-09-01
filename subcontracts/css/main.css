@@ -792,6 +792,17 @@ main {
   height: 30px;
   background: currentColor;
 }
+.stages__item._active .stages__itemFake::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+  width: 1px;
+  height: 30px;
+  background: currentColor;
+}
 .stages__itemSubstage {
   margin: 0;
   padding: 0;
@@ -816,7 +827,6 @@ main {
   border: none;
   cursor: pointer;
   outline: none;
-  pointer-events: none;
 }
 .stages__itemSubstageItem button > span:first-child {
   border-bottom: 1px solid transparent;
@@ -845,7 +855,7 @@ main {
 .stages__itemSubstageItem button ._fake::after {
   content: '';
   position: absolute;
-  top: 100%;
+  top: calc(100% + 1px);
   left: 50%;
   -ms-transform: translateX(-50%);
       transform: translateX(-50%);
@@ -853,13 +863,15 @@ main {
   height: 30px;
   background: #ebebeb;
 }
+.stages__itemSubstageItem._disable button {
+  pointer-events: none;
+}
 .stages__itemSubstageItem._active:not(:last-child) ._fake::after {
   background: var(--accidental-tc);
 }
 .stages__itemSubstageItem._active button,
 .stages__itemSubstageItem._current button {
   color: var(--accidental-tc);
-  pointer-events: auto;
 }
 .stages__itemSubstageItem._active button > span:first-child,
 .stages__itemSubstageItem._current button > span:first-child {
