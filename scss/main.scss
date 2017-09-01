@@ -1803,7 +1803,12 @@ main {
 }
 
 .greet {
-  padding: 260px 0 130px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
   color: #ffffff;
   background: url(../img/bg-greet.jpg) no-repeat 50% 50%/cover;
 
@@ -4149,11 +4154,6 @@ main {
     transform: none;
     margin-top: 20px;
     padding-bottom: 20px;
-  }
-
-  .greet {
-    box-sizing: border-box;
-    padding: 160px 20px 80px;
   }
 
   .prod {
