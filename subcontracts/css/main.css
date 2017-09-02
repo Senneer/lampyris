@@ -3127,6 +3127,7 @@ main {
       flex: 0 0 13px;
   width: 13px;
   height: 13px;
+  margin-right: 5px;
   padding: 0;
   background: url(../img/search.png) no-repeat 50% 50%/contain;
   border: none;
@@ -3342,6 +3343,7 @@ main {
   color: #ffffff;
 }
 .profile__info > li.progress {
+  position: relative;
   padding: 15px 30px;
 }
 .profile__info > li.progress .progress__perc {
@@ -3350,6 +3352,55 @@ main {
   font-weight: 100;
   line-height: 1;
   color: #555863;
+}
+.profile__info > li.progress .progress__more {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: block;
+  z-index: 2;
+}
+.profile__info > li.progress .progress__moreBtn {
+  display: block;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  background: url(../img/more.png) no-repeat 50% 50%/contain;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.profile__info > li.progress .progress__moreList {
+  display: none;
+  position: absolute;
+  top: 101%;
+  right: 0;
+  margin: 0;
+  padding: 10px 15px;
+  list-style: none;
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 10px 20px 0 rgba(0, 173, 228, .15);
+}
+.profile__info > li.progress .progress__moreList li {
+  display: block;
+  margin: 0;
+}
+.profile__info > li.progress .progress__moreList li:not(:last-child) {
+  margin-bottom: 10px;
+}
+.profile__info > li.progress .progress__moreList li button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  font: 400 14px/1 'Segui', segoe;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.profile__info > li.progress .progress__moreList li button:hover {
+  color: #8e94a4;
 }
 .profile__info > li.progress .progress__subtitle {
   margin: 5px 0;
